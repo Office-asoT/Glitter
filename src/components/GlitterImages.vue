@@ -12,5 +12,10 @@ export default Vue.extend({
 });
 </script>
 
-<style scoped>
+<style scoped lang="less">
+.glitter {
+  &__image-list {
+    display: none;
+  }
+}
 </style>

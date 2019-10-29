@@ -2,7 +2,7 @@
   "name": "glitter",
   "version": "0.1.0",
   "private": false,
-  "main":"dist/Glitter.common.js",
+  "main": "dist/Glitter.common.js",
   "files": [
     "dist"
   ],
@@ -23,6 +23,8 @@
     "@vue/cli-plugin-unit-jest": "^4.0.0",
     "@vue/cli-service": "^4.0.0",
     "@vue/test-utils": "1.0.0-beta.29",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
     "typescript": "~3.5.3",
     "vue-template-compiler": "^2.6.10"
   }
