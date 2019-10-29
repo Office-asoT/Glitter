@@ -1,33 +1,27 @@
 <template>
   <div id="app">
     <h1>Sample App for Glitter</h1>
-    <Glitter>
-      <GlitterTopImg v-bind:src="require('./assets/salesman1.jpg')" />
-      <GlitterImages>
-        <GlitterItemImg v-bind:src="require('./assets/salesman1.jpg')" />
-        <GlitterItemImg v-bind:src="require('./assets/salesman2.jpg')" />
-        <GlitterItemImg v-bind:src="require('./assets/salesman3.jpg')" />
-      </GlitterImages>
-    </Glitter>
+    <Glitter
+      v-bind:topImage="require('./assets/salesman1.jpg')"
+      v-bind:images="[
+        require('./assets/salesman1.jpg'),
+        require('./assets/salesman2.jpg'),
+        require('./assets/salesman3.jpg'),
+      ]"
+    />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 
-import Glitter from './components/Glitter.vue';
-import GlitterTopImg from './components/GlitterTopImg.vue';
-import GlitterImages from './components/GlitterImages.vue';
-import GlitterItemImg from './components/GlitterItemImg.vue';
+import Glitter from './Glitter.vue';
 
 export default Vue.extend({
   name: 'app',
 
   components: {
     Glitter,
-    GlitterTopImg,
-    GlitterImages,
-    GlitterItemImg,
   },
 });
 </script>
