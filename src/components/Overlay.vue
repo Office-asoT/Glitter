@@ -1,24 +1,36 @@
 <template>
   <div
     class="glitter__overlay"
-    v-bind:class="{ visible: isOpened }">
+    v-bind:class="{ visible: isOpened }"
+    v-on:click="$emit('close')">
     <ul class="glitter_gallery">
       <li
-        class="glitter_gallery-item"
-        is="gallery-item"
+        is="overlay-item"
         v-for="(src, index) in images"
         v-bind:key="index"
         v-bind:src="src"
-        v-bind:class="{ selected: index === selectedIndex }"
+        v-bind:class="{ selected: index == selectedIndex }"
       />
     </ul>
+    <button
+      class="glitter__prev-button"
+      v-on:click.stop="$emit('prev')"
+    >
+      prev
+    </button>
+    <button
+      class="glitter__next-button"
+      v-on:click.stop="$emit('next')"
+    >
+      next
+    </button>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 
-import GalleryItem from './GalleryItem.vue';
+import OverlayItem from './OverlayItem.vue';
 
 // ギャラリーを表示するコンポーネント
 export default Vue.extend({
@@ -27,7 +39,7 @@ export default Vue.extend({
   props: ['isOpened', 'selectedIndex', 'images'],
 
   components: {
-    GalleryItem,
+    OverlayItem,
   },
 });
 </script>
@@ -42,6 +54,7 @@ export default Vue.extend({
     bottom: 0;
     left: 0;
     background: rgba(0, 0, 0, 0.6);
+    z-index: 100;
 
     &.visible {
       display: block;

@@ -1,21 +1,16 @@
 <template>
-  <div
-    class="glitter"
-    v-on:click="onClick"
-  >
-    <top-image v-bind:src="topImage" />
-    <ul class="glitter__list">
-      <li
-        is="gallery-item"
-        v-for="(src, index) in images"
-        v-bind:key="index"
-        v-bind:src="src"
-      />
-    </ul>
+  <div class="glitter">
+    <top-image
+      v-bind:src="topImage"
+      v-on:clicktop="onToggleOpenState"
+    />
     <overlay
       v-bind:isOpened="store.state.isOpened"
       v-bind:selectedIndex="store.state.selectedIndex"
       v-bind:images="images"
+      v-on:next="onNext"
+      v-on:prev="onPrev"
+      v-on:close="onToggleOpenState"
     />
   </div>
 </template>
@@ -24,7 +19,6 @@
 import Vue from 'vue';
 
 import Store from './store';
-import GalleryItem from './components/GalleryItem.vue';
 import Overlay from './components/Overlay.vue';
 import TopImage from './components/TopImage.vue';
 
@@ -44,23 +38,25 @@ export default Vue.extend({
   },
 
   components: {
-    GalleryItem,
     Overlay,
     TopImage,
   },
 
   methods: {
-    onClick() {
+    onToggleOpenState() {
       (this.store as any).toggleOpenState();
+    },
+
+    onNext() {
+      (this.store as any).proceedImage({ limit: this.images.length });
+    },
+
+    onPrev() {
+      (this.store as any).succeedImage();
     },
   },
 });
 </script>
 
 <style scoped lang="less">
-.glitter {
-  &__list {
-    display: none;
-  }
-}
 </style>
