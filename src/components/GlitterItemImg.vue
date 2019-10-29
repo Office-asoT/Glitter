@@ -7,6 +7,7 @@
 <script lang="ts">
 import Vue from 'vue';
 
+// ギャラリー向けの画像のコンポーネント
 export default Vue.extend({
   name: 'GlitterItemImg',
   props: ['src'],

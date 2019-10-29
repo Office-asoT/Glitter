@@ -7,9 +7,11 @@
 <script lang="ts">
 import Vue from 'vue';
 
+// 表紙絵のコンポーネント
 export default Vue.extend({
   name: 'GlitterTopImg',
-  props: ['src'],
+
+  props: ['src', 'onClick'],
 });
 </script>
 

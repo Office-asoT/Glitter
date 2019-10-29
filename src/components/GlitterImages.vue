@@ -7,6 +7,7 @@
 <script lang="ts">
 import Vue from 'vue';
 
+// ギャラリー向けの画像をラッピングするコンポーネント
 export default Vue.extend({
   name: 'GlitterImages',
 });
