@@ -1,15 +1,14 @@
 <template>
-  <li class="glitter__item-image">
-    <img v-bind:src="src" />
-  </li>
+  <ul class="glitter__image-list">
+    <slot></slot>
+  </ul>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 
 export default Vue.extend({
-  name: 'GlitterItemImg',
-  props: ['src'],
+  name: 'GlitterImages',
 });
 </script>
 
