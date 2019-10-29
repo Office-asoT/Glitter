@@ -3,27 +3,29 @@
     class="glitter__overlay"
     v-bind:class="{ visible: isOpened }"
     v-on:click="$emit('close')">
-    <ul class="glitter_gallery">
-      <li
-        is="overlay-item"
-        v-for="(src, index) in images"
-        v-bind:key="index"
-        v-bind:src="src"
-        v-bind:class="{ selected: index == selectedIndex }"
-      />
-    </ul>
-    <button
-      class="glitter__prev-button"
-      v-on:click.stop="$emit('prev')"
-    >
-      prev
-    </button>
-    <button
-      class="glitter__next-button"
-      v-on:click.stop="$emit('next')"
-    >
-      next
-    </button>
+    <div class="glitter__overlay-container">
+      <ul class="glitter__gallery">
+        <li
+          is="overlay-item"
+          v-for="(src, index) in images"
+          v-bind:key="index"
+          v-bind:src="src"
+          v-bind:class="{ selected: index == selectedIndex }"
+        />
+      </ul>
+      <button
+        class="glitter__prev-button"
+        v-on:click.stop="$emit('prev')"
+      >
+        prev
+      </button>
+      <button
+        class="glitter__next-button"
+        v-on:click.stop="$emit('next')"
+      >
+        next
+      </button>
+    </div>
   </div>
 </template>
 
@@ -59,6 +61,22 @@ export default Vue.extend({
     &.visible {
       display: block;
     }
+  }
+
+  &__overlay-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__gallery {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__next-button {
   }
 }
 </style>
