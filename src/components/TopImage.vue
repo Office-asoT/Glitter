@@ -1,18 +1,18 @@
 <template>
-  <div class="glitter__overlay">
+  <div class="glitter__top_image">
+    <img v-bind:src="src" />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 
-// ギャラリーを表示するコンポーネント
 export default Vue.extend({
-  name: 'GlitterOverlay',
+  name: 'TopImage',
 
   props: ['src'],
 });
 </script>
 
-<style scoped>
+<style scoped lang="less">
 </style>
