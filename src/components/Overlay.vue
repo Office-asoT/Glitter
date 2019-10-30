@@ -55,9 +55,11 @@ export default Vue.extend({
     left: 0;
     background: rgba(0, 0, 0, 0.6);
     z-index: 100;
+    /*transition: transform 0.2s linear;*/
 
     &.visible {
       display: block;
+      /* transform: scale(1.2);*/
     }
   }
 
@@ -65,6 +67,7 @@ export default Vue.extend({
     position: absolute;
     top: 50%;
     left: 50%;
+    width: 100%;
     transform: translate(-50%, -50%);
   }
 
@@ -72,9 +75,6 @@ export default Vue.extend({
     list-style: none;
     padding: 0;
     margin: 0;
-  }
-
-  &__next-button {
   }
 }
 </style>

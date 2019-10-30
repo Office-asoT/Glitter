@@ -19,6 +19,7 @@ export default Vue.extend({
 .glitter {
   &__overlay-item {
     display: none;
+    padding: 1em;
 
     &.selected {
       display: block;
