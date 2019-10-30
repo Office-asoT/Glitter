@@ -22,6 +22,18 @@ import Store from './store';
 import Overlay from './components/Overlay.vue';
 import TopImage from './components/TopImage.vue';
 
+// TODO: らっぱー用意してそっちでstoreしこめばよいのでは？？？
+// storeはdataにもつ
+// imagesの変換器を用意してcaptionを表示する
+// ボタンは継承で
+// トップ絵はslotに変える
+// ローディング
+// swipe
+// アニメーション
+
+// 動的な画像で検証
+// 本物で検証
+
 // ルートコンポーネント
 export default Vue.extend({
   name: 'Glitter',

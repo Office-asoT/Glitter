@@ -10,24 +10,18 @@
 
 ```js
 <template>
-  <Glitter>
-    <GlitterTopImg src="/path/to/top/image />
-    <ul>
-      <li>
-        <GlitterItemImg src="/path/to/image/1" />
-      </li>
-      <li>
-        <GlitterItemImg src="/path/to/image/1" />
-      </li>
-      <li>
-        <GlitterItemImg src="/path/to/image/1" />
-      </li>
-    </ul>
-  </Glitter>
+  <Glitter
+    topImage="/path/to/top/image"
+    v-bind:images="[
+      "/path/to/image/1",
+      "/path/to/image/2",
+      "/path/to/image/3"
+    ]"
+  />
 </template>
 
 <script>
-import { Glitter, GlitterTopImage, GlitterItemImg } from 'glitter'
+import Glitter from 'glitter'
 
 export default {
   components: {
