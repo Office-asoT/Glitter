@@ -13,18 +13,12 @@
           v-bind:class="{ selected: index == selectedIndex }"
         />
       </ul>
-      <button
-        class="glitter__prev-button"
-        v-on:click.stop="$emit('prev')"
-      >
-        prev
-      </button>
-      <button
-        class="glitter__next-button"
-        v-on:click.stop="$emit('next')"
-      >
-        next
-      </button>
+      <prev-arrow
+        v-on:prev="$emit('prev')"
+      />
+      <next-arrow
+        v-on:next="$emit('next')"
+      />
     </div>
   </div>
 </template>
@@ -33,6 +27,8 @@
 import Vue from 'vue';
 
 import OverlayItem from './OverlayItem.vue';
+import NextArrow from './arrows/NextArrow.vue';
+import PrevArrow from './arrows/PrevArrow.vue';
 
 // ギャラリーを表示するコンポーネント
 export default Vue.extend({
@@ -42,6 +38,8 @@ export default Vue.extend({
 
   components: {
     OverlayItem,
+    NextArrow,
+    PrevArrow,
   },
 });
 </script>

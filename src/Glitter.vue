@@ -23,7 +23,8 @@ import Overlay from './components/Overlay.vue';
 
 // - [x] storeはdataにもつ
 // - [ ] imagesの変換器を用意してcaptionを表示する
-// - [ ] ボタンは継承で
+// - [x] ボタンは継承で
+// - [ ] ボタンの見た目
 // - [x] トップ絵はslotに変える
 // - [ ] ローディング
 // - [ ] swipe
