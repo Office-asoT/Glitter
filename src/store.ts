@@ -1,23 +1,28 @@
 interface State {
   isOpened: boolean;
   selectedIndex: number;
+  numOfImages: number;
 }
 
 // 状態管理用のクラス
 export default class Store {
   public state: State;
 
-  constructor() {
-    this.state = { isOpened: false, selectedIndex: 0 };
+  constructor(images: string[] = []) {
+    this.state = {
+      isOpened: false,
+      selectedIndex: 0,
+      numOfImages: images.length,
+    };
   }
 
   public toggleOpenState() {
     this.state.isOpened = !this.state.isOpened;
   }
 
-  public proceedImage({ limit }: { limit: number }) {
+  public proceedImage() {
     const { selectedIndex: currentIndex } = this.state;
-    this.state.selectedIndex = currentIndex + 1 < limit ?
+    this.state.selectedIndex = currentIndex + 1 < this.state.numOfImages ?
       currentIndex + 1 :
       currentIndex;
   }

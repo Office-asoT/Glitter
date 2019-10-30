@@ -12,21 +12,21 @@ describe('Store', () => {
   });
 
   describe('#proceedImage()', () => {
-    describe('今のindexを次にすすめてもlimitを越えないとき', () => {
+    describe('今のindexを次にすすめてもnumOfImagesを越えないとき', () => {
       it('stateのindexをすすめていること', () => {
-        const store = new Store();
-        store.state.selectedIndex = 18;
-        store.proceedImage({ limit: 20 });
-        expect(store.state.selectedIndex).toBe(19);
+        const store = new Store(['1', '2', '3']);
+        store.state.selectedIndex = 1;
+        store.proceedImage();
+        expect(store.state.selectedIndex).toBe(2);
       });
     });
 
     describe('今のindexを次にすすめてもlimitを越るとき', () => {
       it('stateのindexをすすめていないこと', () => {
-        const store = new Store();
-        store.state.selectedIndex = 19;
-        store.proceedImage({ limit: 20 });
-        expect(store.state.selectedIndex).toBe(19);
+        const store = new Store(['1', '2', '3']);
+        store.state.selectedIndex = 2;
+        store.proceedImage();
+        expect(store.state.selectedIndex).toBe(2);
       });
     });
   });

@@ -21,31 +21,27 @@ import Vue from 'vue';
 import Store from './store';
 import Overlay from './components/Overlay.vue';
 
-// TODO: らっぱー用意してそっちでstoreしこめばよいのでは？？？
-// storeはdataにもつ
-// imagesの変換器を用意してcaptionを表示する
-// ボタンは継承で
-// トップ絵はslotに変える
-// ローディング
-// swipe
-// アニメーション
+// - [x] storeはdataにもつ
+// - [ ] imagesの変換器を用意してcaptionを表示する
+// - [ ] ボタンは継承で
+// - [x] トップ絵はslotに変える
+// - [ ] ローディング
+// - [ ] swipe
+// - [ ] アニメーション
 
-// 動的な画像で検証
-// 本物で検証
+// - [x] 動的な画像で検証
+// - [ ] 本物で検証
 
 // ルートコンポーネント
 export default Vue.extend({
   name: 'Glitter',
 
-  props: {
-    topImage: String,
-    images: Array,
-    store: {
-      type: Store,
-      default: () => {
-        return new Store();
-      },
-    },
+  props: ['topImage', 'images'],
+
+  data: function() {
+    return {
+      store: new Store(this.images),
+    };
   },
 
   components: {
@@ -54,15 +50,15 @@ export default Vue.extend({
 
   methods: {
     onToggleOpenState() {
-      (this.store as any).toggleOpenState();
+      this.store.toggleOpenState();
     },
 
     onNext() {
-      (this.store as any).proceedImage({ limit: this.images.length });
+      this.store.proceedImage();
     },
 
     onPrev() {
-      (this.store as any).succeedImage();
+      this.store.succeedImage();
     },
   },
 });
