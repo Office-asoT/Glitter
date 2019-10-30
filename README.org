@@ -1,0 +1,66 @@
+#+TITLE: Glitter
+
+画像ギャラリーのVueコンポーネント
+
+[Luminous](https://github.com/imgix/luminous)(「明るい」) を参考にしてglitter(「煌めき」)と名付けました。
+
+* インストール
+
+TBD
+
+* 使い方
+
+#+begin_src javascript
+<template>
+  <glitter
+    v-bind:images="[
+      "/path/to/image/1",
+      { src: "/path/to/image/2", caption: "キャプションも指定できます" },
+      "/path/to/image/3"
+    ]"
+  >
+    <!-- ここが表紙として表示されます -->
+    <img src="/path/to/top/image" />
+  </glitter>
+</template>
+
+<script>
+import Glitter from 'glitter'
+import 'glitter/dist/Glitter.css'
+
+export default {
+  components: {
+    Glitter
+  }
+}
+</script>
+#+end_src
+
+* 開発
+
+[Vue Cli](https://cli.vuejs.org/) が必要です。
+
+** 前準備
+
+#+begin_src shell
+npm install
+#+end_src
+
+** 開発用サーバの起動
+
+#+begin_src shell
+npm run serve
+#+end_src
+
+** ビルド
+
+#+begin_src shell
+npm run build
+#+end_src
+
+** テスト
+
+```
+#+begin_src shell
+npm run test:unit
+#+end_src
