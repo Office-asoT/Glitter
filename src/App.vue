@@ -1,14 +1,17 @@
 <template>
   <div id="app">
     <h1>Sample App for Glitter</h1>
-    <Glitter
-      v-bind:topImage="require('./assets/salesman1.jpg')"
+    <glitter
       v-bind:images="[
         require('./assets/salesman1.jpg'),
         require('./assets/salesman2.jpg'),
         require('./assets/salesman3.jpg'),
       ]"
-    />
+    >
+      <div>
+        <img src="./assets/salesman1.jpg" />
+      </div>
+    </glitter>
   </div>
 </template>
 

@@ -1,9 +1,9 @@
 <template>
-  <div class="glitter">
-    <top-image
-      v-bind:src="topImage"
-      v-on:clicktop="onToggleOpenState"
-    />
+  <div
+    class="glitter"
+    v-on:click="onToggleOpenState"
+  >
+    <slot></slot>
     <overlay
       v-bind:isOpened="store.state.isOpened"
       v-bind:selectedIndex="store.state.selectedIndex"
@@ -20,7 +20,6 @@ import Vue from 'vue';
 
 import Store from './store';
 import Overlay from './components/Overlay.vue';
-import TopImage from './components/TopImage.vue';
 
 // TODO: らっぱー用意してそっちでstoreしこめばよいのでは？？？
 // storeはdataにもつ
@@ -51,7 +50,6 @@ export default Vue.extend({
 
   components: {
     Overlay,
-    TopImage,
   },
 
   methods: {

@@ -2,7 +2,7 @@
   <div
     class="glitter__overlay"
     v-bind:class="{ visible: isOpened }"
-    v-on:click="$emit('close')">
+    v-on:click.stop="$emit('close')">
     <div class="glitter__overlay-container">
       <ul class="glitter__gallery">
         <li
