@@ -69,5 +69,6 @@ export default Vue.extend({
 <style scoped lang="less">
 .glitter {
   font-size: 16px;
+  cursor: pointer;
 }
 </style>

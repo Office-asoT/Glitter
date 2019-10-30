@@ -21,8 +21,8 @@ export default class Store {
   }
 
   public proceedImage() {
-    const { selectedIndex: currentIndex } = this.state;
-    this.state.selectedIndex = currentIndex + 1 < this.state.numOfImages ?
+    const { selectedIndex: currentIndex, numOfImages } = this.state;
+    this.state.selectedIndex = currentIndex + 1 < numOfImages ?
       currentIndex + 1 :
       currentIndex;
   }

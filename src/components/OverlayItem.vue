@@ -1,6 +1,12 @@
 <template>
-  <li class="glitter__overlay-item">
-    <img class="glitter__overlay-item-image" v-bind:src="src" />
+  <li
+    class="glitter__overlay-item"
+    v-bind:class="{ selected: isSelected }"
+  >
+    <img
+      class="glitter__overlay-item-image"
+      v-bind:src="src"
+    />
   </li>
 </template>
 
@@ -11,7 +17,7 @@ import Vue from 'vue';
 export default Vue.extend({
   name: 'GlitterItemImg',
 
-  props: ['src'],
+props: ['src', 'isSelected'],
 });
 </script>
 

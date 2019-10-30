@@ -9,16 +9,12 @@
           is="overlay-item"
           v-for="(src, index) in images"
           v-bind:key="index"
+          v-bind:isSelected="index === selectedIndex"
           v-bind:src="src"
-          v-bind:class="{ selected: index == selectedIndex }"
         />
       </ul>
-      <prev-arrow
-        v-on:prev="$emit('prev')"
-      />
-      <next-arrow
-        v-on:next="$emit('next')"
-      />
+      <prev-arrow v-on:prev="$emit('prev')" />
+      <next-arrow v-on:next="$emit('next')" />
     </div>
   </div>
 </template>
