@@ -5,19 +5,26 @@
   >
     <img
       class="glitter__overlay-item-image"
-      v-bind:src="src"
+      v-bind:src="image.src"
     />
+    <overlay-item-caption v-bind:text="image.caption" />
   </li>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 
+import OverlayItemCaption from './OverlayItemCaption.vue';
+
 // ギャラリー向けの画像のコンポーネント
 export default Vue.extend({
-  name: 'GlitterItemImg',
+  name: 'OverlayItem',
 
-props: ['src', 'isSelected'],
+  props: ['image', 'isSelected'],
+
+  components: {
+    OverlayItemCaption,
+  },
 });
 </script>
 

@@ -7,7 +7,7 @@
     <overlay
       v-bind:isOpened="store.state.isOpened"
       v-bind:selectedIndex="store.state.selectedIndex"
-      v-bind:images="images"
+      v-bind:images="normalizedImages"
       v-on:next="onNext"
       v-on:prev="onPrev"
       v-on:close="onToggleOpenState"
@@ -19,22 +19,10 @@
 import Vue from 'vue';
 
 import Store from './store';
+import ImageItem from './image-item';
 import Overlay from './components/Overlay.vue';
 
-// - [x] storeはdataにもつ
-// - [ ] imagesの変換器を用意してcaptionを表示する
-// - [x] ボタンは継承で
-// - [x] ボタンの見た目
-// - [x] max-width
-// - [x] トップ絵はslotに変える
-// - [ ] ローディング
-// - [ ] swipe
-// - [ ] アニメーション
-
-// - [x] 動的な画像で検証
-// - [ ] 本物で検証
-
-// ルートコンポーネント
+// コンテナーコンポーネント
 export default Vue.extend({
   name: 'Glitter',
 
@@ -51,16 +39,24 @@ export default Vue.extend({
   },
 
   methods: {
-    onToggleOpenState() {
-      this.store.toggleOpenState();
+    onToggleOpenState: function() {
+      // FIXME: 何故かanyにキャストしないとTSに怒られる…
+      (this as any).store.toggleOpenState();
+      (this as any).store.resetIndex();
     },
 
     onNext() {
-      this.store.proceedImage();
+      (this as any).store.proceedImage();
     },
 
     onPrev() {
-      this.store.succeedImage();
+      (this as any).store.succeedImage();
+    },
+  },
+
+  computed: {
+    normalizedImages: function() {
+      return this.images.map(ImageItem.create);
     },
   },
 });

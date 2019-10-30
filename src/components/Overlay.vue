@@ -7,10 +7,10 @@
       <ul class="glitter__gallery">
         <li
           is="overlay-item"
-          v-for="(src, index) in images"
+          v-for="(image, index) in images"
           v-bind:key="index"
           v-bind:isSelected="index === selectedIndex"
-          v-bind:src="src"
+          v-bind:image="image"
         />
       </ul>
       <prev-arrow v-on:prev="$emit('prev')" />
@@ -41,6 +41,17 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="less">
+@keyframes zoom {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 .glitter {
   &__overlay {
     position: fixed;
@@ -51,11 +62,11 @@ export default Vue.extend({
     left: 0;
     background: rgba(0, 0, 0, 0.6);
     z-index: 100;
-    /*transition: transform 0.2s linear;*/
-
+    text-align: center;
+  
     &.visible {
       display: block;
-      /* transform: scale(1.2);*/
+      animation: zoom 180ms ease-out;
     }
   }
 

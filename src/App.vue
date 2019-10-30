@@ -3,7 +3,7 @@
     <h1>Sample App for Glitter</h1>
     <glitter
       v-bind:images="[
-        require('./assets/salesman1.jpg'),
+        { src: require('./assets/salesman1.jpg'), caption: 'だぁー' },
         require('./assets/salesman2.jpg'),
         require('./assets/salesman3.jpg'),
         require('./assets/salesman4.jpg'),

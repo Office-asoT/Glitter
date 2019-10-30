@@ -10,18 +10,20 @@
 
 ```js
 <template>
-  <Glitter
-    topImage="/path/to/top/image"
+  <glitter
     v-bind:images="[
       "/path/to/image/1",
-      "/path/to/image/2",
+      { src: "/path/to/image/2", caption: "キャプションも指定できます" },
       "/path/to/image/3"
     ]"
-  />
+  >
+    <img src="/path/to/top/image" />
+  </glitter>
 </template>
 
 <script>
 import Glitter from 'glitter'
+import 'glitter/dist/Glitter.css'
 
 export default {
   components: {

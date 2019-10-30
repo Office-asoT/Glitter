@@ -1,3 +1,5 @@
+import { CanonicalImage } from './image-item';
+
 interface State {
   isOpened: boolean;
   selectedIndex: number;
@@ -8,7 +10,7 @@ interface State {
 export default class Store {
   public state: State;
 
-  constructor(images: string[] = []) {
+  constructor(images: Array<CanonicalImage | string> = []) {
     this.state = {
       isOpened: false,
       selectedIndex: 0,
@@ -18,6 +20,10 @@ export default class Store {
 
   public toggleOpenState() {
     this.state.isOpened = !this.state.isOpened;
+  }
+
+  public resetIndex() {
+    this.state.selectedIndex = 0;
   }
 
   public proceedImage() {
