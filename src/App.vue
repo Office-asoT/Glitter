@@ -6,6 +6,7 @@
         require('./assets/salesman1.jpg'),
         require('./assets/salesman2.jpg'),
         require('./assets/salesman3.jpg'),
+        require('./assets/salesman4.jpg'),
       ]"
     >
       <div>

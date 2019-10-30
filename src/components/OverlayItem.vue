@@ -24,5 +24,10 @@ export default Vue.extend({
       display: block;
     }
   }
+
+  &__overlay-item-image {
+    max-width: 100%;
+    max-height: 100%;
+  }
 }
 </style>
