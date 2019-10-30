@@ -37,7 +37,7 @@ import Overlay from './components/Overlay.vue';
 export default Vue.extend({
   name: 'Glitter',
 
-  props: ['topImage', 'images'],
+  props: ['images'],
 
   data: function() {
     return {
@@ -66,4 +66,7 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="less">
+.glitter {
+  font-size: 16px;
+}
 </style>

@@ -14,7 +14,8 @@
   },
   "dependencies": {
     "core-js": "^3.3.2",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "vue-material-design-icons": "^4.1.0"
   },
   "devDependencies": {
     "@types/jest": "^24.0.11",
