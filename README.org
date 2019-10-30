@@ -2,7 +2,7 @@
 
 画像ギャラリーのVueコンポーネント
 
-[Luminous](https://github.com/imgix/luminous)(「明るい」) を参考にしてglitter(「煌めき」)と名付けました。
+[[https://github.com/imgix/luminous][Luminous]](「明るい」) を参考にしてglitter(「煌めき」)と名付けました。
 
 * インストール
 
