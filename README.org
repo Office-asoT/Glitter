@@ -40,7 +40,7 @@ export default {
 
 * 開発
 
-[Vue Cli](https://cli.vuejs.org/) が必要です。
+[[https://cli.vuejs.org/][Vue Cli]] が必要です。
 
 ** 前準備
 
@@ -62,7 +62,6 @@ npm run build
 
 ** テスト
 
-```
 #+begin_src shell
 npm run test:unit
 #+end_src
