@@ -1,4 +1,4 @@
-import Store from '@/store';
+import Store, { State } from '@/store';
 
 describe('Store', () => {
   describe('constructor', () => {
@@ -30,4 +30,37 @@ describe('Store', () => {
       });
     });
   });
+
+  describe('State', () => {
+    describe('set selectedIndex', () => {
+      describe('selectedIndexがnumOfImages - 1より大きいとき', () => {
+        it('assertionエラーを投げること', () => {
+          const state = new State(defaultStateData());
+
+          expect(() => {
+            state.selectedIndex = 2;
+          }).toThrow();
+        });
+      });
+
+      describe('selectedIndexが0より小さいとき', () => {
+        it('assertionエラーを投げること', () => {
+          const state = new State(defaultStateData());
+
+          expect(() => {
+            state.selectedIndex = -1;
+          }).toThrow();
+        });
+      });
+    });
+  });
 });
+
+function defaultStateData(opts = {}) {
+  return {
+    isOpened: false,
+    selectedIndex: 0,
+    numOfImages: 2,
+    ...opts,
+  };
+}

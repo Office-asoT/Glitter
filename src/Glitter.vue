@@ -19,8 +19,7 @@
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 
 import Store from './store';
-import ImageItem from './image-item';
-import { CanonicalImage } from './image-item';
+import ImageItem, { CanonicalImage } from './image-item';
 import Overlay from './components/Overlay.vue';
 
 // コンテナーコンポーネント
