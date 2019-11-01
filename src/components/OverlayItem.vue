@@ -12,20 +12,21 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import { Component, Prop, Vue } from 'vue-property-decorator';
 
 import OverlayItemCaption from './OverlayItemCaption.vue';
+import { CanonicalImage } from '../image-item';
 
 // ギャラリー向けの画像のコンポーネント
-export default Vue.extend({
-  name: 'OverlayItem',
-
-  props: ['image', 'isSelected'],
-
+@Component({
   components: {
     OverlayItemCaption,
   },
-});
+})
+export default class OverlayItem extends Vue {
+  @Prop() private image!: CanonicalImage;
+  @Prop() private isSelected!: boolean;
+}
 </script>
 
 <style scoped lang="less">

@@ -15,7 +15,9 @@
   "dependencies": {
     "core-js": "^3.3.2",
     "vue": "^2.6.10",
-    "vue-material-design-icons": "^4.1.0"
+    "vue-class-component": "^7.1.0",
+    "vue-material-design-icons": "^4.1.0",
+    "vue-property-decorator": "^8.3.0"
   },
   "devDependencies": {
     "@types/jest": "^24.0.11",

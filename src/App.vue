@@ -11,23 +11,23 @@
     >
       <div>
         <img src="./assets/job_kyuujinshi.png" />
+        <p>ここが表紙として表示されます</p>
       </div>
     </glitter>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import { Component, Prop, Vue } from 'vue-property-decorator';
 
 import Glitter from './Glitter.vue';
 
-export default Vue.extend({
-  name: 'app',
-
+@Component({
   components: {
     Glitter,
   },
-});
+})
+export default class App extends Vue {}
 </script>
 
 <style>

@@ -5,12 +5,12 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import { Component, Prop, Vue } from 'vue-property-decorator';
 
-export default Vue.extend({
-  name: 'OverlayItemCaption',
-  props: ['text'],
-});
+@Component
+export default class OverlayItemCaption extends Vue {
+  @Prop() private text!: string;
+}
 </script>
 
 <style scoped lang="less">

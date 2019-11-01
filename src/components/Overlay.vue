@@ -20,24 +20,26 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import { Component, Prop, Vue } from 'vue-property-decorator';
 
 import OverlayItem from './OverlayItem.vue';
 import NextArrow from './arrows/NextArrow.vue';
 import PrevArrow from './arrows/PrevArrow.vue';
+import { CanonicalImage } from '../image-item';
 
 // ギャラリーを表示するコンポーネント
-export default Vue.extend({
-  name: 'Overlay',
-
-  props: ['isOpened', 'selectedIndex', 'images'],
-
+@Component({
   components: {
     OverlayItem,
     NextArrow,
     PrevArrow,
   },
-});
+})
+export default class Overlay extends Vue {
+  @Prop() private isOpened!: boolean;
+  @Prop() private selectedIndex!: number;
+  @Prop() private images!: CanonicalImage[];
+}
 </script>
 
 <style scoped lang="less">

@@ -7,7 +7,7 @@
     <overlay
       v-bind:isOpened="store.state.isOpened"
       v-bind:selectedIndex="store.state.selectedIndex"
-      v-bind:images="normalizedImages"
+      v-bind:images="normalizedImages()"
       v-on:next="onNext"
       v-on:prev="onPrev"
       v-on:close="onToggleOpenState"
@@ -16,50 +16,41 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import { Component, Prop, Vue } from 'vue-property-decorator';
 
 import Store from './store';
 import ImageItem from './image-item';
+import { CanonicalImage } from './image-item';
 import Overlay from './components/Overlay.vue';
 
 // コンテナーコンポーネント
-export default Vue.extend({
-  name: 'Glitter',
-
-  props: ['images'],
-
-  data: function() {
-    return {
-      store: new Store(this.images),
-    };
-  },
-
+@Component({
   components: {
     Overlay,
   },
+})
+export default class Glitter extends Vue {
+  @Prop() private images!: Array<string | CanonicalImage>;
 
-  methods: {
-    onToggleOpenState: function() {
-      // FIXME: 何故かanyにキャストしないとTSに怒られる…
-      (this as any).store.toggleOpenState();
-      (this as any).store.resetIndex();
-    },
+  private store: Store = new Store(this.images);
 
-    onNext() {
-      (this as any).store.proceedImage();
-    },
+  private onToggleOpenState() {
+    this.store.toggleOpenState();
+    this.store.resetIndex();
+  }
 
-    onPrev() {
-      (this as any).store.succeedImage();
-    },
-  },
+  private onNext() {
+    this.store.proceedImage();
+  }
 
-  computed: {
-    normalizedImages: function() {
-      return this.images.map(ImageItem.create);
-    },
-  },
-});
+  private onPrev() {
+    this.store.succeedImage();
+  }
+
+  private normalizedImages() {
+    return this.images.map(ImageItem.create);
+  }
+}
 </script>
 
 <style scoped lang="less">
