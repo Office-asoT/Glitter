@@ -4,8 +4,6 @@
 
 [[https://github.com/imgix/luminous][Luminous]](「明るい」) を参考にしてglitter(「煌めき」)と名付けました。
 
-[[./images/example.gif]]
-
 * インストール
 
 TBD

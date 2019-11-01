@@ -3,14 +3,14 @@
     <h1>Sample App for Glitter</h1>
     <glitter
       v-bind:images="[
-        { src: require('./assets/salesman1.jpg'), caption: 'だぁー' },
-        require('./assets/salesman2.jpg'),
-        require('./assets/salesman3.jpg'),
-        require('./assets/salesman4.jpg'),
+        require('./assets/job_sokki_woman.png'),
+        { src: require('./assets/job_syokugyou_taiken_kangoshi_boy.png'),
+          caption: 'キャプションも指定できます' },
+        require('./assets/job_syokugyou_taiken_syouboushi_girl.png'),
       ]"
     >
       <div>
-        <img src="./assets/salesman1.jpg" />
+        <img src="./assets/job_kyuujinshi.png" />
       </div>
     </glitter>
   </div>
