@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 
 import Store from './store';
 import ImageItem from './image-item';
@@ -33,6 +33,11 @@ export default class Glitter extends Vue {
   @Prop() private images!: Array<string | CanonicalImage>;
 
   private store: Store = new Store(this.images);
+
+  @Watch('images')
+  public onImagesChanged() {
+    this.store = new Store(this.images);
+  }
 
   private onToggleOpenState() {
     this.store.toggleOpenState();
