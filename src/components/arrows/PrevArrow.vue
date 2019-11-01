@@ -11,18 +11,17 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import { Component, Prop, Vue } from 'vue-property-decorator';
 import ArrowLeftDropCircle from 'vue-material-design-icons/ArrowLeftDropCircle.vue';
 
 import 'vue-material-design-icons/styles.css';
 
-export default Vue.extend({
-  name: 'PrevArrow',
-
+@Component({
   components: {
     ArrowLeftDropCircle,
   },
-});
+})
+export default class PrevArrow extends Vue {}
 </script>
 
 <style scoped lang="less">
