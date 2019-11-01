@@ -8,6 +8,8 @@
       v-bind:isOpened="store.state.isOpened"
       v-bind:selectedIndex="store.state.selectedIndex"
       v-bind:images="normalizedImages()"
+      v-bind:hasNext="store.state.hasNext"
+      v-bind:hasPrev="store.state.hasPrev"
       v-on:next="onNext"
       v-on:prev="onPrev"
       v-on:close="onToggleOpenState"

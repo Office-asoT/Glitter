@@ -67,6 +67,14 @@ export class State {
   public get selectedIndex() { return this._selectedIndex; }
   public get numOfImages() { return this._numOfImages; }
 
+  public get hasNext() {
+    return this.selectedIndex + 1 < this.numOfImages;
+  }
+
+  public get hasPrev() {
+    return this.selectedIndex > 0;
+  }
+
   public set isOpened(value: boolean) { this._isOpened = value; }
   public set numOfImages(value) { this._numOfImages = value; }
 
