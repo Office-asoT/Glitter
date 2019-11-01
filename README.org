@@ -4,13 +4,18 @@
 
 [[https://github.com/imgix/luminous][Luminous]](「明るい」) を参考にしてglitter(「煌めき」)と名付けました。
 
+[[./images/example.gif]]
+
 * インストール
 
-TBD
+
+#+begin_src shell
+npm install git://github.com/Office-asoT/Glitter.git#0.1.0
+#+end_src
 
 * 使い方
 
-#+begin_src javascript
+#+begin_src vue
 <template>
   <glitter
     v-bind:images="[
