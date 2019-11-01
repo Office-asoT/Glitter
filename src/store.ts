@@ -1,9 +1,10 @@
 import { CanonicalImage } from './image-item';
 
-interface State {
-  isOpened: boolean;
-  selectedIndex: number;
-  numOfImages: number;
+/* tslint:disable max-classes-per-file adjacent-overload-signatures */
+export class AssertionError extends Error {
+  constructor(message: string = '') {
+    super(message);
+  }
 }
 
 // 状態管理用のクラス
@@ -11,11 +12,11 @@ export default class Store {
   public state: State;
 
   constructor(images: Array<CanonicalImage | string> = []) {
-    this.state = {
+    this.state = new State({
       isOpened: false,
       selectedIndex: 0,
       numOfImages: images.length,
-    };
+    });
   }
 
   public toggleOpenState() {
@@ -40,3 +41,49 @@ export default class Store {
       currentIndex - 1;
   }
 }
+
+export class State {
+  /* tslint:disable variable-name */
+  private _isOpened: boolean;
+  private _selectedIndex: number;
+  private _numOfImages: number;
+  /* tslint:enable variable-name */
+
+  constructor({
+    isOpened = false,
+    selectedIndex = 0,
+    numOfImages,
+  }: {
+    isOpened: boolean,
+    selectedIndex: number,
+    numOfImages: number,
+  }) {
+    this._isOpened = isOpened;
+    this._selectedIndex = selectedIndex;
+    this._numOfImages = numOfImages;
+  }
+
+  public get isOpened() { return this._isOpened; }
+  public get selectedIndex() { return this._selectedIndex; }
+  public get numOfImages() { return this._numOfImages; }
+
+  public get hasNext() {
+    return this.selectedIndex + 1 < this.numOfImages;
+  }
+
+  public get hasPrev() {
+    return this.selectedIndex > 0;
+  }
+
+  public set isOpened(value: boolean) { this._isOpened = value; }
+  public set numOfImages(value) { this._numOfImages = value; }
+
+  public set selectedIndex(value) {
+    if (value + 1 > this.numOfImages || value < 0) {
+      throw new AssertionError();
+    }
+
+    this._selectedIndex = value;
+  }
+}
+/* tslint:ensable max-classes-per-file */

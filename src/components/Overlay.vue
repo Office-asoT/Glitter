@@ -13,8 +13,14 @@
           v-bind:image="image"
         />
       </ul>
-      <prev-arrow v-on:prev="$emit('prev')" />
-      <next-arrow v-on:next="$emit('next')" />
+      <prev-arrow
+        v-bind:visible="hasPrev"
+        v-on:prev="$emit('prev')"
+      />
+      <next-arrow
+        v-bind:visible="hasNext"
+        v-on:next="$emit('next')"
+      />
     </div>
   </div>
 </template>
@@ -39,6 +45,8 @@ export default class Overlay extends Vue {
   @Prop() private isOpened!: boolean;
   @Prop() private selectedIndex!: number;
   @Prop() private images!: CanonicalImage[];
+  @Prop() private hasNext!: boolean;
+  @Prop() private hasPrev!: boolean;
 }
 </script>
 
