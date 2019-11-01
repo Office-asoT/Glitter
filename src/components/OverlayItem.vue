@@ -2,6 +2,7 @@
   <li
     class="glitter__overlay-item"
     v-bind:class="{ selected: isSelected }"
+    v-on:click.stop=""
   >
     <img
       class="glitter__overlay-item-image"
@@ -34,6 +35,7 @@ export default class OverlayItem extends Vue {
   &__overlay-item {
     display: none;
     padding: 1em;
+    cursor: default;
 
     &.selected {
       display: block;
