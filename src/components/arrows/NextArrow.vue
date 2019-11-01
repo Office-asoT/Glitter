@@ -3,6 +3,7 @@
     <a
       href="#"
       class="glitter__next-arrow"
+      v-bind:class="{ visible: visible }"
       v-on:click.stop="$emit('next')"
     >
       <arrow-right-drop-circle />
@@ -21,7 +22,9 @@ import 'vue-material-design-icons/styles.css';
     ArrowRightDropCircle,
   },
 })
-export default class NextArrow extends Vue {}
+export default class NextArrow extends Vue {
+  @Prop() private visible!: boolean;
+}
 </script>
 
 <style scoped lang="less">
