@@ -4,8 +4,11 @@
     v-on:click="onToggleOpenState"
   >
     <slot></slot>
+    <loading
+      v-bind:isOpened="store.state.isOpened && !store.state.isReady"
+    />
     <overlay
-      v-bind:isOpened="store.state.isOpened"
+      v-bind:isOpened="store.state.isOpened && store.state.isReady"
       v-bind:selectedIndex="store.state.selectedIndex"
       v-bind:images="normalizedImages()"
       v-bind:hasNext="store.state.hasNext"
@@ -22,11 +25,13 @@ import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 
 import Store from './store';
 import ImageItem, { CanonicalImage } from './image-item';
+import Loading from './components/Loading.vue';
 import Overlay from './components/Overlay.vue';
 
 // コンテナーコンポーネント
 @Component({
   components: {
+    Loading,
     Overlay,
   },
 })

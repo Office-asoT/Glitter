@@ -93,6 +93,7 @@ function defaultStateData(opts = {}) {
     isOpened: false,
     selectedIndex: 0,
     numOfImages: 2,
+    isReady: true,
     ...opts,
   };
 }
