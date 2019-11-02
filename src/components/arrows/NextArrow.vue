@@ -6,7 +6,7 @@
       v-bind:class="{ visible: visible }"
       v-on:click.stop="$emit('next')"
     >
-      <arrow-right-drop-circle />
+      <arrow-right-drop-circle title="Next" />
     </a>
   </div>
 </template>

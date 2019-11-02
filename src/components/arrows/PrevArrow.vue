@@ -6,7 +6,7 @@
       v-bind:class="{ visible: visible }"
       v-on:click.stop="$emit('prev')"
     >
-      <arrow-left-drop-circle />
+      <arrow-left-drop-circle title="Prev" />
     </a>
   </div>
 </template>
