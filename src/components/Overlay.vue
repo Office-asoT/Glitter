@@ -51,6 +51,8 @@ export default class Overlay extends Vue {
 </script>
 
 <style scoped lang="less">
+@import "./overlay.less";
+
 @keyframes zoom {
   0% {
     transform: scale(0.5);
@@ -64,15 +66,9 @@ export default class Overlay extends Vue {
 
 .glitter {
   &__overlay {
-    position: fixed;
+    .glitter-overlay();
+
     display: none;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 100;
-    text-align: center;
   
     &.visible {
       display: block;
@@ -81,11 +77,9 @@ export default class Overlay extends Vue {
   }
 
   &__overlay-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
+    .glitter-overlay-inner();
+
     width: 100%;
-    transform: translate(-50%, -50%);
   }
 
   &__gallery {

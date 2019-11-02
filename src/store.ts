@@ -1,22 +1,37 @@
+import assert from './assert';
+import ImageCache from './image-cache';
 import { CanonicalImage } from './image-item';
 
 /* tslint:disable max-classes-per-file adjacent-overload-signatures */
-export class AssertionError extends Error {
-  constructor(message: string = '') {
-    super(message);
-  }
+
+interface StoreOption {
+  // ローディング画像を表示するか否か
+  showLoading: boolean;
 }
 
 // 状態管理用のクラス
 export default class Store {
+  // 実際の状態を保持するオブジェクト
   public state: State;
 
-  constructor(images: Array<CanonicalImage | string> = []) {
+  // 画像のキャッシュ
+  public imageCache: ImageCache;
+
+  constructor(images: Array<CanonicalImage | string> = [],
+              opts: StoreOption = { showLoading: true }) {
     this.state = new State({
       isOpened: false,
       selectedIndex: 0,
       numOfImages: images.length,
+      isReady: false,
     });
+    this.imageCache = new ImageCache(images);
+
+    if (opts.showLoading) {
+      this.imageCache.on('ready', () => this.state.isReady = true);
+    } else {
+      this.state.isReady = true;
+    }
   }
 
   public toggleOpenState() {
@@ -47,25 +62,30 @@ export class State {
   private _isOpened: boolean;
   private _selectedIndex: number;
   private _numOfImages: number;
+  private _isReady: boolean;
   /* tslint:enable variable-name */
 
   constructor({
     isOpened = false,
     selectedIndex = 0,
+    isReady = false,
     numOfImages,
   }: {
     isOpened: boolean,
     selectedIndex: number,
+    isReady: boolean,
     numOfImages: number,
   }) {
     this._isOpened = isOpened;
     this._selectedIndex = selectedIndex;
     this._numOfImages = numOfImages;
+    this._isReady = isReady;
   }
 
   public get isOpened() { return this._isOpened; }
   public get selectedIndex() { return this._selectedIndex; }
   public get numOfImages() { return this._numOfImages; }
+  public get isReady() { return this._isReady; }
 
   public get hasNext() {
     return this.selectedIndex + 1 < this.numOfImages;
@@ -77,13 +97,12 @@ export class State {
 
   public set isOpened(value: boolean) { this._isOpened = value; }
   public set numOfImages(value) { this._numOfImages = value; }
+  public set isReady(value: boolean) { this._isReady = value; }
 
-  public set selectedIndex(value) {
-    if (value + 1 > this.numOfImages || value < 0) {
-      throw new AssertionError();
-    }
+  public set selectedIndex(value: number) {
+    assert(value + 1 <= this.numOfImages && value >= 0);
 
     this._selectedIndex = value;
   }
 }
-/* tslint:ensable max-classes-per-file */
+/* tslint:ensable max-classes-per-file adjacent-overload-signatures */
