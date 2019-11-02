@@ -7,6 +7,8 @@
     <img
       class="glitter__overlay-item-image"
       v-bind:src="image.src"
+      v-bind:alt="image.caption"
+      v-bind:title="image.caption"
     />
     <overlay-item-caption v-bind:text="image.caption" />
   </li>
