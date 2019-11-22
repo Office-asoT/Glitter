@@ -3,7 +3,6 @@ import { CanonicalImage } from '../image-item';
 import State from './state';
 
 interface StoreOption {
-  // ローディング画像を表示するか否か
   showLoading?: boolean;
 }
 
@@ -12,8 +11,7 @@ export default class Store {
   // 実際の状態を保持するオブジェクト
   public state: State;
 
-  constructor(imageLoader: ImageLoader,
-              opts: StoreOption = { showLoading: true }) {
+  constructor(imageLoader: ImageLoader, opts: StoreOption = {}) {
     this.state = new State({
       isOpened: false,
       selectedIndex: 0,

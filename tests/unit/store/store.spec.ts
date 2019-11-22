@@ -19,30 +19,32 @@ describe('Store', () => {
       expect(store.state.numOfImages).toBe(3);
     });
 
-    it('state.isReadyはfalseであること', () => {
-      const store = new Store(new DummyImageLoader(2));
-      expect(store.state.isReady).toBe(false);
-    });
-
-    describe('imageLoaderがreadを発火したとき', () => {
-      it('state.isReadyはtrueであること', () => {
-        const loader = new DummyImageLoader(2);
-        const store = new Store(loader);
-
+    describe('opts.showLoadingがtrueのとき', () => {
+      it('state.isReadyはfalseであること', () => {
+        const store = new Store(new DummyImageLoader(2), { showLoading: true });
         expect(store.state.isReady).toBe(false);
-        loader.emit('ready');
-        expect(store.state.isReady).toBe(true);
       });
-    });
 
-    describe('imageLoaderがerror発火したとき', () => {
-      it('state.isReadyはtrueであること', () => {
-        const loader = new DummyImageLoader(2);
-        const store = new Store(loader);
+      describe('imageLoaderがreadを発火したとき', () => {
+        it('state.isReadyはtrueであること', () => {
+          const loader = new DummyImageLoader(2);
+          const store = new Store(loader, { showLoading: true });
 
-        expect(store.state.isReady).toBe(false);
-        loader.emit('error');
-        expect(store.state.isReady).toBe(true);
+          expect(store.state.isReady).toBe(false);
+          loader.emit('ready');
+          expect(store.state.isReady).toBe(true);
+        });
+      });
+
+      describe('imageLoaderがerror発火したとき', () => {
+        it('state.isReadyはtrueであること', () => {
+          const loader = new DummyImageLoader(2);
+          const store = new Store(loader, { showLoading: true });
+
+          expect(store.state.isReady).toBe(false);
+          loader.emit('error');
+          expect(store.state.isReady).toBe(true);
+        });
       });
     });
 
