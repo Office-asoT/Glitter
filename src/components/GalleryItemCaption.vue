@@ -1,5 +1,5 @@
 <template>
-  <div class="glitter__overlay-item-caption">
+  <div class="glitter__gallery-item-caption">
     {{ text }}
   </div>
 </template>
@@ -15,7 +15,7 @@ export default class OverlayItemCaption extends Vue {
 
 <style scoped lang="less">
 .glitter {
-  &__overlay-item-caption {
+  &__gallery-item-caption {
     color: #fffafa;
     font-size: 1.2em
   }

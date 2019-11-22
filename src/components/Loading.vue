@@ -3,15 +3,14 @@
 
 <template>
   <div
-    class="showbox"
+    class="glitter__loader-container"
     v-bind:class="{ visible: isOpened }"
   >
-    <div class="loader">
-      <svg class="circular" viewBox="25 25 50 50">
-        <circle class="path" cx="50" cy="50" r="20" fill="none"
-                stroke-width="2" stroke-miterlimit="10"/>
-      </svg>
-    </div>
+    <svg class="glitter__loader-circular" viewBox="25 25 50 50">
+      <circle class="glitter__loader-circular-path"
+              cx="50" cy="50" r="20" fill="none"
+              stroke-width="2" stroke-miterlimit="10"/>
+    </svg>
   </div>
 </template>
 
@@ -25,8 +24,6 @@ export default class Loading extends Vue {
 </script>
 
 <style scoped lang="less">
-@import "./overlay.less";
-
 @green: #008744;
 @blue: #0057e7;
 @red: #d62d20;
@@ -65,51 +62,50 @@ export default class Loading extends Vue {
   }
 }
 
-.showbox {
-  .glitter-overlay();
-
-  display: none;
-
-  &.visible {
-    display: block;
-  }
-}
-
-.loader {
-  .glitter-overlay-inner();
-
-  margin: 0 auto;
-  width: 100px;
-  &:before {
-    content: '';
-    display: block;
-    padding-top: 100%;
-  }
-}
-
-.circular {
-  animation: rotate 2s linear infinite;
-  height: 100%;
-  transform-origin: center center;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-}
-
-.path {
-  stroke-dasharray: 1, 200;
-  stroke-dashoffset: 0;
-  animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
-  stroke-linecap: round;
-}
-
 @keyframes rotate {
   100% {
     transform: rotate(360deg);
+  }
+}
+
+.glitter {
+  &__loader-container {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+    width: 100px;
+    &:before {
+      content: '';
+      display: block;
+      padding-top: 100%;
+    }
+  
+    &.visible {
+      display: block;
+    }
+  }
+
+  &__loader-circular {
+    animation: rotate 2s linear infinite;
+    height: 100%;
+    transform-origin: center center;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+
+  &__loader-circular-path {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+    animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+    stroke-linecap: round;
   }
 }
 </style>
