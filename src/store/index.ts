@@ -4,7 +4,7 @@ import State from './state';
 
 interface StoreOption {
   // ローディング画像を表示するか否か
-  showLoading: boolean | undefined;
+  showLoading?: boolean;
 }
 
 // 状態管理用のクラス
@@ -21,8 +21,12 @@ export default class Store {
       isReady: false,
     });
 
+    const onReady = () => this.state.isReady = true;
+
     if (opts.showLoading) {
-      imageLoader.on('ready', () => this.state.isReady = true);
+      imageLoader.once('ready', onReady);
+      // errorになってもどうしようもないのでisReady=trueにしてしまう
+      imageLoader.once('error', onReady);
     } else {
       this.state.isReady = true;
     }

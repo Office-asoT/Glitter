@@ -35,6 +35,17 @@ describe('Store', () => {
       });
     });
 
+    describe('imageLoaderがerror発火したとき', () => {
+      it('state.isReadyはtrueであること', () => {
+        const loader = new DummyImageLoader(2);
+        const store = new Store(loader);
+
+        expect(store.state.isReady).toBe(false);
+        loader.emit('error');
+        expect(store.state.isReady).toBe(true);
+      });
+    });
+
     describe('opts.showLoadingがfalseのとき', () => {
       it('state.isReadyはtrueであること', () => {
         const store = new Store(new DummyImageLoader(2), { showLoading: false });

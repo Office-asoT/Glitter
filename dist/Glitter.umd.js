@@ -10511,10 +10511,14 @@ function () {
       isReady: false
     });
 
+    var onReady = function onReady() {
+      return _this.state.isReady = true;
+    };
+
     if (opts.showLoading) {
-      imageLoader.on('ready', function () {
-        return _this.state.isReady = true;
-      });
+      imageLoader.once('ready', onReady); // errorになってもどうしようもないのでisReady=trueにしてしまう
+
+      imageLoader.once('error', onReady);
     } else {
       this.state.isReady = true;
     }
@@ -10653,24 +10657,34 @@ function (_EventEmitter) {
       var _load = _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee() {
+        var sources;
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
-                return Promise.all(this.images.map(function (image) {
+                sources = this.images.map(function (image) {
                   return typeof image === 'string' ? image : image.src;
-                }).map(loadImage));
+                });
+                _context.prev = 1;
+                _context.next = 4;
+                return Promise.all(sources.map(loadImage));
 
-              case 2:
+              case 4:
                 this.emit('ready');
+                _context.next = 10;
+                break;
 
-              case 3:
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](1);
+                this.emit('error', _context.t0);
+
+              case 10:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this);
+        }, _callee, this, [[1, 7]]);
       }));
 
       function load() {
