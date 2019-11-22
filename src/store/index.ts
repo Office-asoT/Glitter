@@ -1,4 +1,4 @@
-import ImageCache from '../image-cache';
+import { ImageLoader } from '../image-loader';
 import { CanonicalImage } from '../image-item';
 import State from './state';
 
@@ -12,21 +12,17 @@ export default class Store {
   // 実際の状態を保持するオブジェクト
   public state: State;
 
-  // 画像のキャッシュ
-  public imageCache: ImageCache;
-
-  constructor(images: Array<CanonicalImage | string> = [],
+  constructor(imageLoader: ImageLoader,
               opts: StoreOption = { showLoading: true }) {
     this.state = new State({
       isOpened: false,
       selectedIndex: 0,
-      numOfImages: images.length,
+      numOfImages: imageLoader.size,
       isReady: false,
     });
-    this.imageCache = new ImageCache(images);
 
     if (opts.showLoading) {
-      this.imageCache.on('ready', () => this.state.isReady = true);
+      imageLoader.on('ready', () => this.state.isReady = true);
     } else {
       this.state.isReady = true;
     }

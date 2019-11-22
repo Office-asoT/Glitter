@@ -2,15 +2,26 @@ import { EventEmitter } from 'events';
 
 import { CanonicalImage } from './image-item';
 
-export default class ImageCache extends EventEmitter {
-  constructor(images: Array<CanonicalImage | string> = []) {
+export interface ImageLoader extends EventEmitter {
+  readonly size: number;
+}
+
+export class CachedImageLoader extends EventEmitter {
+  private images: Array<CanonicalImage | string> = [];
+
+  constructor(images: Array<CanonicalImage | string>) {
     super();
-    this.awaitImagesLoaded(images);
+    this.images = images;
+    this.load();
   }
 
-  private async awaitImagesLoaded(images: Array<CanonicalImage | string> = []) {
+  public get size() {
+    return this.images.length;
+  }
+
+  private async load() {
     await Promise.all(
-      images
+      this.images
         .map((image) => typeof image === 'string' ? image : image.src)
         .map(loadImage),
     );

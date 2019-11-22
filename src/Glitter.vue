@@ -29,6 +29,7 @@
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 
 import Store from './store';
+import { CachedImageLoader } from './image-loader';
 import ImageItem, { CanonicalImage } from './image-item';
 import Loading from './components/Loading.vue';
 import Gallery from './components/Gallery.vue';
@@ -48,13 +49,11 @@ export default class Glitter extends Vue {
   // ローディング画像を表示するかどうか？
   @Prop({ default: true }) private showLoading?: boolean;
 
-  private store: Store = new Store(this.images, {
-    showLoading: this.showLoading,
-  });
+  private store: Store = this.newStore();
 
   @Watch('images')
   public onImagesChanged() {
-    this.store = new Store(this.images);
+    this.store = this.newStore();
   }
 
   private onToggleOpenState() {
@@ -72,6 +71,15 @@ export default class Glitter extends Vue {
 
   private normalizedImages() {
     return this.images.map(ImageItem.create);
+  }
+
+  private newStore() {
+    return new Store(
+      new CachedImageLoader(this.images),
+      {
+        showLoading: this.showLoading,
+      },
+    );
   }
 }
 </script>
