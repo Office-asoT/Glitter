@@ -10,20 +10,20 @@
       v-bind:alt="image.caption"
       v-bind:title="image.caption"
     />
-    <overlay-item-caption v-bind:text="image.caption" />
+    <gallery-item-caption v-bind:text="image.caption" />
   </li>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
-import OverlayItemCaption from './OverlayItemCaption.vue';
+import GalleryItemCaption from './GalleryItemCaption.vue';
 import { CanonicalImage } from '../image-item';
 
 // ギャラリー向けの画像のコンポーネント
 @Component({
   components: {
-    OverlayItemCaption,
+    GalleryItemCaption,
   },
 })
 export default class OverlayItem extends Vue {

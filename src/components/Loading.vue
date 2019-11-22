@@ -3,15 +3,13 @@
 
 <template>
   <div
-    class="showbox"
+    class="loader"
     v-bind:class="{ visible: isOpened }"
   >
-    <div class="loader">
-      <svg class="circular" viewBox="25 25 50 50">
-        <circle class="path" cx="50" cy="50" r="20" fill="none"
-                stroke-width="2" stroke-miterlimit="10"/>
-      </svg>
-    </div>
+    <svg class="circular" viewBox="25 25 50 50">
+      <circle class="path" cx="50" cy="50" r="20" fill="none"
+              stroke-width="2" stroke-miterlimit="10"/>
+    </svg>
   </div>
 </template>
 
@@ -25,8 +23,6 @@ export default class Loading extends Vue {
 </script>
 
 <style scoped lang="less">
-@import "./overlay.less";
-
 @green: #008744;
 @blue: #0057e7;
 @red: #d62d20;
@@ -65,25 +61,22 @@ export default class Loading extends Vue {
   }
 }
 
-.showbox {
-  .glitter-overlay();
-
-  display: none;
-
-  &.visible {
-    display: block;
-  }
-}
-
 .loader {
-  .glitter-overlay-inner();
-
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   margin: 0 auto;
   width: 100px;
   &:before {
     content: '';
     display: block;
     padding-top: 100%;
+  }
+
+  &.visible {
+    display: block;
   }
 }
 
