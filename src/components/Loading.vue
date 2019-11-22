@@ -9,7 +9,7 @@
     <svg class="glitter__loader-circular" viewBox="25 25 50 50">
       <circle class="glitter__loader-circular-path"
               cx="50" cy="50" r="20" fill="none"
-              stroke-width="2" stroke-miterlimit="10"/>
+              stroke-width="3" stroke-miterlimit="10"/>
     </svg>
   </div>
 </template>
@@ -24,12 +24,6 @@ export default class Loading extends Vue {
 </script>
 
 <style scoped lang="less">
-@green: #008744;
-@blue: #0057e7;
-@red: #d62d20;
-@yellow: #ffa700;
-@white: #eee;
-
 @keyframes dash {
   0% {
     stroke-dasharray: 1, 200;
@@ -48,17 +42,10 @@ export default class Loading extends Vue {
 @keyframes color {
   100%,
   0% {
-    stroke: @red;
+    stroke: rgba(211, 211, 211, .8);
   }
-  40% {
-    stroke: @blue;
-  }
-  66% {
-    stroke: @green;
-  }
-  80%,
   90% {
-    stroke: @yellow;
+    stroke: rgba(211, 211, 211, 1);
   }
 }
 
