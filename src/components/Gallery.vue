@@ -1,6 +1,6 @@
 <template>
   <div
-    class="glitter__overlay-container"
+    class="glitter__gallery-container"
     v-bind:class="{ visible: isOpened }"
   >
     <ul class="glitter__gallery">
@@ -61,7 +61,7 @@ export default class Overlay extends Vue {
 }
 
 .glitter {
-  &__overlay-container {
+  &__gallery-container {
     position: absolute;
     top: 50%;
     left: 50%;

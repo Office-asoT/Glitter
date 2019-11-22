@@ -1,11 +1,11 @@
 <template>
   <li
-    class="glitter__overlay-item"
+    class="glitter__gallery-item"
     v-bind:class="{ selected: isSelected }"
     v-on:click.stop=""
   >
     <img
-      class="glitter__overlay-item-image"
+      class="glitter__gallery-item-image"
       v-bind:src="image.src"
       v-bind:alt="image.caption"
       v-bind:title="image.caption"
@@ -34,7 +34,7 @@ export default class OverlayItem extends Vue {
 
 <style scoped lang="less">
 .glitter {
-  &__overlay-item {
+  &__gallery-item {
     display: none;
     padding: 1em;
     cursor: default;
@@ -44,7 +44,7 @@ export default class OverlayItem extends Vue {
     }
   }
 
-  &__overlay-item-image {
+  &__gallery-item-image {
     max-width: 100%;
     max-height: 100%;
   }
