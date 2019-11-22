@@ -2,7 +2,7 @@ import { ImageLoader } from '../image-loader';
 import { CanonicalImage } from '../image-item';
 import State from './state';
 
-interface StoreOption {
+export interface StoreOption {
   showLoading?: boolean;
 }
 

@@ -2,10 +2,12 @@ import { EventEmitter } from 'events';
 
 import { CanonicalImage } from './image-item';
 
+// 画像ローダ
 export interface ImageLoader extends EventEmitter {
   readonly size: number;
 }
 
+// ブラウザのキャッシュを利用する画像ローダ
 export class CachedImageLoader extends EventEmitter {
   private images: Array<CanonicalImage | string> = [];
 

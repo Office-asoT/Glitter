@@ -26,7 +26,6 @@ export default class State {
   }
 
   public get isOpened() { return this._isOpened; }
-
   public set isOpened(value: boolean) { this._isOpened = value; }
 
   public get selectedIndex() { return this._selectedIndex; }
@@ -38,11 +37,9 @@ export default class State {
   }
 
   public get numOfImages() { return this._numOfImages; }
-
   public set numOfImages(value) { this._numOfImages = value; }
 
   public get isReady() { return this._isReady; }
-
   public set isReady(value: boolean) { this._isReady = value; }
 
   public get hasNext() {
