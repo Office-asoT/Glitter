@@ -4,7 +4,7 @@ import State from './state';
 
 interface StoreOption {
   // ローディング画像を表示するか否か
-  showLoading: boolean;
+  showLoading: boolean | undefined;
 }
 
 // 状態管理用のクラス

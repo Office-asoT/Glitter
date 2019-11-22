@@ -45,7 +45,12 @@ import Overlay from './components/Overlay.vue';
 export default class Glitter extends Vue {
   @Prop() private images!: Array<string | CanonicalImage>;
 
-  private store: Store = new Store(this.images);
+  // ローディング画像を表示するかどうか？
+  @Prop({ default: true }) private showLoading?: boolean;
+
+  private store: Store = new Store(this.images, {
+    showLoading: this.showLoading,
+  });
 
   @Watch('images')
   public onImagesChanged() {
