@@ -20,10 +20,6 @@
       v-bind:visible="hasNext"
       v-on:next="$emit('next')"
     />
-    <close-button
-      v-if="showCloseButton"
-      v-on:close="$emit('close')"
-    />
     <page-numbers
       v-if="showPageNumbers"
       v-bind:pageNumber="pageNumber"
@@ -36,7 +32,6 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 
 import PageNumber from '../store/state';
 import GalleryItem from './GalleryItem.vue';
-import CloseButton from './buttons/CloseButton.vue';
 import NextArrow from './buttons/NextArrow.vue';
 import PrevArrow from './buttons/PrevArrow.vue';
 import PageNumbers from './PageNumbers.vue';
@@ -46,7 +41,6 @@ import { CanonicalImage } from '../image-item';
 @Component({
   components: {
     GalleryItem,
-    CloseButton,
     NextArrow,
     PrevArrow,
     PageNumbers,
@@ -59,7 +53,6 @@ export default class Overlay extends Vue {
   @Prop() private hasNext!: boolean;
   @Prop() private hasPrev!: boolean;
   @Prop() private showPageNumbers!: boolean;
-  @Prop() private showCloseButton!: boolean;
   @Prop() private pageNumber!: PageNumber;
 }
 </script>

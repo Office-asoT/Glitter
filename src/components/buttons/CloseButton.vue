@@ -32,8 +32,7 @@ export default class CloseButton extends Vue {
   &__close {
     .glitter__button();
 
-    top: 3%;
-    right: 10%;
+    right: 1%;
   }
 }
 </style>

@@ -18,10 +18,12 @@
         v-bind:hasNext="store.state.hasNext"
         v-bind:hasPrev="store.state.hasPrev"
         v-bind:showPageNumbers="showPageNumbers"
-        v-bind:showCloseButton="showCloseButton"
         v-bind:pageNumber="store.state.pageNumber"
         v-on:next="onNext"
         v-on:prev="onPrev"
+      />
+      <close-button
+        v-if="showCloseButton"
         v-on:close="onToggleOpenState"
       />
     </overlay>
@@ -37,6 +39,7 @@ import ImageItem, { CanonicalImage } from './image-item';
 import Loading from './components/Loading.vue';
 import Gallery from './components/Gallery.vue';
 import Overlay from './components/Overlay.vue';
+import CloseButton from './components/buttons/CloseButton.vue';
 
 // コンテナーコンポーネント
 @Component({
@@ -44,6 +47,7 @@ import Overlay from './components/Overlay.vue';
     Loading,
     Gallery,
     Overlay,
+    CloseButton,
   },
 })
 export default class Glitter extends Vue {
