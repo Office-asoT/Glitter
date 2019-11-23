@@ -11,15 +11,28 @@
               cx="50" cy="50" r="20" fill="none"
               stroke-width="3" stroke-miterlimit="10"/>
     </svg>
+    <loading-progress-text
+      v-if="showLoadingProgress"
+      v-bind:loadingProgress="loadingProgress"
+    />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
-@Component
+import { LoadingProgress } from '../store/state';
+import LoadingProgressText from './LoadingProgressText.vue';
+
+@Component({
+  components: {
+    LoadingProgressText,
+  },
+})
 export default class Loading extends Vue {
+  @Prop() private showLoadingProgress!: boolean;
   @Prop() private isOpened!: boolean;
+  @Prop() private loadingProgress!: LoadingProgress;
 }
 </script>
 

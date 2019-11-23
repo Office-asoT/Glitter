@@ -1,6 +1,6 @@
 import { ImageLoader } from '../image-loader';
 import { CanonicalImage } from '../image-item';
-import State from './state';
+import State, { LoadingProgress } from './state';
 
 export interface StoreOption {
   showLoading?: boolean;
@@ -19,8 +19,13 @@ export default class Store {
       isReady: false,
     });
 
+    const onProgress = (loadedImageCount: number) => {
+      this.state.loadedImageCount += 1;
+    };
+
     const onReady = () => {
       this.state.isReady = true;
+      imageLoader.removeListener('progress', onProgress);
       imageLoader.removeListener('ready', onReady);
       imageLoader.removeListener('error', onReady);
     };
@@ -29,6 +34,7 @@ export default class Store {
       imageLoader.once('ready', onReady);
       // errorになってもどうしようもないのでisReady=trueにしてしまう
       imageLoader.once('error', onReady);
+      imageLoader.on('progress', onProgress);
     } else {
       this.state.isReady = true;
     }
