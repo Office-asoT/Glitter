@@ -1,11 +1,16 @@
 @marginRatio: 5%;
 
-.glitter__arrow-button {
-  display: none;
+.glitter__button {
   position: absolute;
-  top: 50%;
   color: rgba(211, 211, 211, .8);
   font-size: 3em;
+}
+
+.glitter__arrow-button {
+  .glitter__button();
+
+  display: none;
+  top: 50%;
 
   &.visible {
     display: inline;
