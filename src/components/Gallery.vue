@@ -20,15 +20,21 @@
       v-bind:visible="hasNext"
       v-on:next="$emit('next')"
     />
+    <page-numbers
+      v-if="showPageNumbers"
+      v-bind:pageNumber="pageNumber"
+    />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
+import PageNumber from '../store/state';
 import GalleryItem from './GalleryItem.vue';
 import NextArrow from './arrows/NextArrow.vue';
 import PrevArrow from './arrows/PrevArrow.vue';
+import PageNumbers from './PageNumbers.vue';
 import { CanonicalImage } from '../image-item';
 
 // ギャラリーを表示するコンポーネント
@@ -37,6 +43,7 @@ import { CanonicalImage } from '../image-item';
     GalleryItem,
     NextArrow,
     PrevArrow,
+    PageNumbers,
   },
 })
 export default class Overlay extends Vue {
@@ -45,6 +52,8 @@ export default class Overlay extends Vue {
   @Prop() private images!: CanonicalImage[];
   @Prop() private hasNext!: boolean;
   @Prop() private hasPrev!: boolean;
+  @Prop() private showPageNumbers!: boolean;
+  @Prop() private pageNumber!: PageNumber;
 }
 </script>
 

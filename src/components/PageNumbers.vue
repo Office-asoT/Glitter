@@ -1,0 +1,26 @@
+<template>
+  <div class="glitter__page-numbers">
+    {{ pageNumber.currentPage }} / {{ pageNumber.maxPage }}
+  </div>
+</template>
+
+<script lang="ts">
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import PageNumber from '../store/state';
+
+// ページ番号を表示するコンポーネント
+@Component({})
+export default class PageNumbers extends Vue {
+  @Prop() private pageNumber!: PageNumber;
+}
+</script>
+
+<style lang="less">
+.glitter {
+  &__page-numbers {
+    color: #fffafa;
+    font-size: 1.2em
+  }
+ }
+</style>

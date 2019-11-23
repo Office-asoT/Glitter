@@ -1,5 +1,10 @@
 import assert from '../assert';
 
+export interface PageNumber {
+  currentPage: number;
+  maxPage: number;
+}
+
 export default class State {
   /* tslint:disable variable-name */
   private _isOpened: boolean;
@@ -48,5 +53,12 @@ export default class State {
 
   public get hasPrev() {
     return this.selectedIndex > 0;
+  }
+
+  public get pageNumber(): PageNumber {
+    return {
+      currentPage: this.selectedIndex + 1,
+      maxPage: this.numOfImages,
+    };
   }
 }
