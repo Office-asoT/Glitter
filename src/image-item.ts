@@ -1,10 +1,13 @@
 import { EventEmitter } from 'events';
 
 export interface CanonicalImage {
+  // 画像のソース
   src: string;
+  // 画像のキャプション
   caption: string;
 }
 
+// Imageのラッパークラス
 declare interface ImageItem {
   // 画像がロードされたときに発火されるイベント
   on(event: 'load', listener: () => void): this;

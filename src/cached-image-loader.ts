@@ -32,9 +32,14 @@ export default class CachedImageLoader
 
 function loadImage(imageItem: ImageItem): Promise<void> {
   return new Promise((resolve, reject) => {
-    // FIXME: メモリリーク
-    imageItem.once('load', resolve);
-    imageItem.once('error', reject);
+    function done(fn: () => void) {
+      imageItem.removeListener('load', resolve);
+      imageItem.removeListener('error', reject);
+      fn();
+    }
+
+    imageItem.once('load', () => done(() => resolve()));
+    imageItem.once('error', (e: Error) => done(() => reject(e)));
 
     imageItem.cache();
   });
