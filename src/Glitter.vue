@@ -16,7 +16,7 @@
       <gallery
         v-bind:isOpened="store.state.isReady"
         v-bind:selectedIndex="store.state.selectedIndex"
-        v-bind:images="normalizedImages()"
+        v-bind:imageItems="store.state.imageItems"
         v-bind:hasNext="store.state.hasNext"
         v-bind:hasPrev="store.state.hasPrev"
         v-bind:showPageNumbers="showPageNumbers"
@@ -88,17 +88,11 @@ export default class Glitter extends Vue {
     this.store.succeedImage();
   }
 
-  private normalizedImages() {
-    return this.images.map(ImageItem.create);
-  }
-
   private newStore() {
-    return new Store(
-      new CachedImageLoader(this.images),
-      {
-        showLoading: this.showLoading,
-      },
-    );
+    const imageItems = this.images.map(ImageItem.create);
+    const loader = new CachedImageLoader(imageItems);
+    const showLoading = this.showLoading;
+    return new Store(imageItems, loader, { showLoading });
   }
 }
 </script>

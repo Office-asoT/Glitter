@@ -1,4 +1,5 @@
 import assert from '../assert';
+import ImageItem from '../image-item';
 
 export interface PageNumber {
   currentPage: number;
@@ -9,29 +10,33 @@ export type LoadingProgress = PageNumber;
 
 export default class State {
   /* tslint:disable variable-name */
+  private _imageItems: ImageItem[];
   private _isOpened: boolean;
   private _selectedIndex: number;
-  private _numOfImages: number;
   private _isReady: boolean;
+  private _numOfImages: number;
   private _loadedImageCount: number = 0;
   /* tslint:enable variable-name */
 
   constructor({
+    imageItems = [],
     isOpened = false,
     selectedIndex = 0,
     isReady = false,
-    numOfImages,
   }: {
+    imageItems: ImageItem[],
     isOpened: boolean,
     selectedIndex: number,
     isReady: boolean,
-    numOfImages: number,
   }) {
+    this._imageItems = imageItems;
     this._isOpened = isOpened;
     this._selectedIndex = selectedIndex;
-    this._numOfImages = numOfImages;
     this._isReady = isReady;
+    this._numOfImages = imageItems.length;
   }
+
+  public get imageItems() { return this._imageItems; }
 
   public get isOpened() { return this._isOpened; }
   public set isOpened(value: boolean) { this._isOpened = value; }
@@ -45,7 +50,6 @@ export default class State {
   }
 
   public get numOfImages() { return this._numOfImages; }
-  public set numOfImages(value) { this._numOfImages = value; }
 
   public get isReady() { return this._isReady; }
   public set isReady(value: boolean) { this._isReady = value; }

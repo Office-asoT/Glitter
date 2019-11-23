@@ -6,10 +6,10 @@
     <ul class="glitter__gallery">
       <li
         is="gallery-item"
-        v-for="(image, index) in images"
+        v-for="(imageItem, index) in imageItems"
         v-bind:key="index"
         v-bind:isSelected="index === selectedIndex"
-        v-bind:image="image"
+        v-bind:imageItem="imageItem"
       />
     </ul>
     <prev-arrow
@@ -35,7 +35,7 @@ import GalleryItem from './GalleryItem.vue';
 import NextArrow from './buttons/NextArrow.vue';
 import PrevArrow from './buttons/PrevArrow.vue';
 import PageNumbers from './PageNumbers.vue';
-import { CanonicalImage } from '../image-item';
+import ImageItem from '../image-item';
 
 // ギャラリーを表示するコンポーネント
 @Component({
@@ -49,7 +49,7 @@ import { CanonicalImage } from '../image-item';
 export default class Overlay extends Vue {
   @Prop() private isOpened!: boolean;
   @Prop() private selectedIndex!: number;
-  @Prop() private images!: CanonicalImage[];
+  @Prop() private imageItems!: ImageItem[];
   @Prop() private hasNext!: boolean;
   @Prop() private hasPrev!: boolean;
   @Prop() private showPageNumbers!: boolean;

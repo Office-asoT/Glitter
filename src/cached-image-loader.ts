@@ -1,35 +1,28 @@
 import { EventEmitter } from 'events';
 
 import ImageLoader from './store/image-loader';
-import { CanonicalImage } from './image-item';
+import ImageItem from './image-item';
 
 // ブラウザのキャッシュを利用する画像ローダ
 export default class CachedImageLoader
     extends EventEmitter implements ImageLoader {
-  private images: Array<CanonicalImage | string> = [];
+  private imageItems: ImageItem[] = [];
 
-  constructor(images: Array<CanonicalImage | string>) {
+  constructor(imageItems: ImageItem[]) {
     super();
-    this.images = images;
+    this.imageItems = imageItems;
     this.load();
   }
 
-  public get size() {
-    return this.images.length;
-  }
-
   private async load() {
-    const loadOne = async (src: string, index: number) => {
-      await loadImage(src);
+    const loadOne = async (imageItem: ImageItem, index: number) => {
+      await loadImage(imageItem);
       // 現在ロード済みの画像のindexをemitする
       this.emit('progress', index + 1);
     };
 
-    const sources = this.images
-      .map((image) => typeof image === 'string' ? image : image.src);
-
     try {
-      await Promise.all(sources.map(loadOne));
+      await Promise.all(this.imageItems.map(loadOne));
       this.emit('ready');
     } catch (e) {
       this.emit('error', e);
@@ -37,17 +30,12 @@ export default class CachedImageLoader
   }
 }
 
-function loadImage(src: string): Promise<void> {
-  const img = new Image();
+function loadImage(imageItem: ImageItem): Promise<void> {
+  return new Promise((resolve, reject) => {
+    // FIXME: メモリリーク
+    imageItem.once('load', resolve);
+    imageItem.once('error', reject);
 
-  img.src = src;
-
-  if (img.complete) {
-    return Promise.resolve();
-  } else {
-    return new Promise((resolve, reject) => {
-      img.addEventListener('load', () => resolve());
-      img.addEventListener('error', () => reject());
-    });
-  }
+    imageItem.cache();
+  });
 }

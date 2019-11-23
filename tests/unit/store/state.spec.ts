@@ -1,4 +1,5 @@
 import State from '@/store/state';
+import ImageItem from '@/image-item';
 
 describe('State', () => {
   describe('set selectedIndex', () => {
@@ -58,6 +59,10 @@ describe('State', () => {
 
 function defaultStateData(opts = {}) {
   return {
+    imageItems: [
+      new ImageItem({ src: 'hoge', caption: 'piyo' }),
+      new ImageItem({ src: 'hoge2', caption: 'piyo2' }),
+    ],
     isOpened: false,
     selectedIndex: 0,
     numOfImages: 2,

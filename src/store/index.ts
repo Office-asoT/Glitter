@@ -1,5 +1,5 @@
 import ImageLoader from './image-loader';
-import { CanonicalImage } from '../image-item';
+import ImageItem from '../image-item';
 import State, { LoadingProgress } from './state';
 
 // Storeのオプション
@@ -13,11 +13,13 @@ export default class Store {
   // 実際の状態を保持するオブジェクト
   public state: State;
 
-  constructor(imageLoader: ImageLoader, opts: StoreOption = {}) {
+  constructor(imageItems: ImageItem[],
+              imageLoader: ImageLoader,
+              opts: StoreOption = {}) {
     this.state = new State({
+      imageItems: imageItems,
       isOpened: false,
       selectedIndex: 0,
-      numOfImages: imageLoader.size,
       isReady: false,
     });
 
