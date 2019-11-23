@@ -19,17 +19,14 @@ export default class CachedImageLoader
   }
 
   private async load() {
-    const loadOne = async (src: string, index: number) => {
-      await loadImage(src);
+    const loadOne = async (image: CanonicalImage | string, index: number) => {
+      await loadImage(typeof image === 'string' ? image : image.src);
       // 現在ロード済みの画像のindexをemitする
       this.emit('progress', index + 1);
     };
 
-    const sources = this.images
-      .map((image) => typeof image === 'string' ? image : image.src);
-
     try {
-      await Promise.all(sources.map(loadOne));
+      await Promise.all(this.images.map(loadOne));
       this.emit('ready');
     } catch (e) {
       this.emit('error', e);
@@ -47,7 +44,7 @@ function loadImage(src: string): Promise<void> {
   } else {
     return new Promise((resolve, reject) => {
       img.addEventListener('load', () => resolve());
-      img.addEventListener('error', () => reject());
+      img.addEventListener('error', (e) => reject(e));
     });
   }
 }
