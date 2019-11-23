@@ -1,14 +1,11 @@
 import { EventEmitter } from 'events';
 
+import ImageLoader from './store/image-loader';
 import { CanonicalImage } from './image-item';
 
-// 画像ローダ
-export interface ImageLoader extends EventEmitter {
-  readonly size: number;
-}
-
 // ブラウザのキャッシュを利用する画像ローダ
-export class CachedImageLoader extends EventEmitter {
+export default class CachedImageLoader
+    extends EventEmitter implements ImageLoader {
   private images: Array<CanonicalImage | string> = [];
 
   constructor(images: Array<CanonicalImage | string>) {
