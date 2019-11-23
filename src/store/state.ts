@@ -5,12 +5,15 @@ export interface PageNumber {
   maxPage: number;
 }
 
+export type LoadingProgress = PageNumber;
+
 export default class State {
   /* tslint:disable variable-name */
   private _isOpened: boolean;
   private _selectedIndex: number;
   private _numOfImages: number;
   private _isReady: boolean;
+  private _loadedImageCount: number = 0;
   /* tslint:enable variable-name */
 
   constructor({
@@ -47,12 +50,25 @@ export default class State {
   public get isReady() { return this._isReady; }
   public set isReady(value: boolean) { this._isReady = value; }
 
+  public get loadedImageCount() { return this._loadedImageCount; }
+
+  public set loadedImageCount(value: number) {
+    this._loadedImageCount = value;
+  }
+
   public get hasNext() {
     return this.selectedIndex + 1 < this.numOfImages;
   }
 
   public get hasPrev() {
     return this.selectedIndex > 0;
+  }
+
+  public get loadingProgress() {
+    return {
+      currentPage: this.loadedImageCount,
+      maxPage: this.numOfImages,
+    };
   }
 
   public get pageNumber(): PageNumber {

@@ -3,14 +3,12 @@
     <h1>Sample App for Glitter</h1>
     <glitter
       v-bind:images="[
-        'https://incloop.com/blog_neta/test/big.png?data=1',
-        'https://incloop.com/blog_neta/test/big.png?data=1',
         require('./assets/job_sokki_woman.png'),
         { src: require('./assets/job_syokugyou_taiken_kangoshi_boy.png'),
           caption: 'キャプションも指定できます' },
         require('./assets/job_syokugyou_taiken_syouboushi_girl.png'),
       ]"
-      v-bind:showCloseButton="true"
+      v-bind:showLoadingProgress="true"
     >
       <div>
         <img src="./assets/job_kyuujinshi.png" />

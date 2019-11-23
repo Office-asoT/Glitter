@@ -34,6 +34,33 @@ describe('Store', () => {
           loader.emit('ready');
           expect(store.state.isReady).toBe(true);
         });
+
+        it('readyのイベントリスナは解除されていること', () => {
+          const loader = new DummyImageLoader(2);
+          const store = new Store(loader, { showLoading: true });
+
+          expect(loader.listeners('ready').length).toBe(1);
+          loader.emit('ready');
+          expect(loader.listeners('ready').length).toBe(0);
+        });
+
+        it('errorのイベントリスナも解除されていること', () => {
+          const loader = new DummyImageLoader(2);
+          const store = new Store(loader, { showLoading: true });
+
+          expect(loader.listeners('error').length).toBe(1);
+          loader.emit('ready');
+          expect(loader.listeners('error').length).toBe(0);
+        });
+
+        it('progressのイベントリスナも解除されていること', () => {
+          const loader = new DummyImageLoader(2);
+          const store = new Store(loader, { showLoading: true });
+
+          expect(loader.listeners('progress').length).toBe(1);
+          loader.emit('ready');
+          expect(loader.listeners('progress').length).toBe(0);
+        });
       });
 
       describe('imageLoaderがerror発火したとき', () => {
@@ -44,6 +71,45 @@ describe('Store', () => {
           expect(store.state.isReady).toBe(false);
           loader.emit('error');
           expect(store.state.isReady).toBe(true);
+        });
+
+        it('errorのイベントリスナは解除されていること', () => {
+          const loader = new DummyImageLoader(2);
+          const store = new Store(loader, { showLoading: true });
+
+          expect(loader.listeners('error').length).toBe(1);
+          loader.emit('error');
+          expect(loader.listeners('error').length).toBe(0);
+        });
+
+        it('readyのイベントリスナも解除されていること', () => {
+          const loader = new DummyImageLoader(2);
+          const store = new Store(loader, { showLoading: true });
+
+          expect(loader.listeners('ready').length).toBe(1);
+          loader.emit('error');
+          expect(loader.listeners('ready').length).toBe(0);
+        });
+
+        it('progressのイベントリスナも解除されていること', () => {
+          const loader = new DummyImageLoader(2);
+          const store = new Store(loader, { showLoading: true });
+
+          expect(loader.listeners('progress').length).toBe(1);
+          loader.emit('error');
+          expect(loader.listeners('progress').length).toBe(0);
+        });
+      });
+
+      describe('imageLoaderがprogressを発火したとき', () => {
+        it('state.loadingProgressは最新のローディング情報に更新されていること', () => {
+          const loader = new DummyImageLoader(10);
+          const store = new Store(loader, { showLoading: true });
+
+          loader.emit('progress', 1);
+          loader.emit('progress', 2);
+          expect(store.state.loadingProgress.currentPage).toBe(2);
+          expect(store.state.loadingProgress.maxPage).toBe(10);
         });
       });
     });
