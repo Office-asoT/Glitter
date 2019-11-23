@@ -17,6 +17,8 @@
         v-bind:images="normalizedImages()"
         v-bind:hasNext="store.state.hasNext"
         v-bind:hasPrev="store.state.hasPrev"
+        v-bind:showPageNumbers="showPageNumbers"
+        v-bind:pageNumber="store.state.pageNumber"
         v-on:next="onNext"
         v-on:prev="onPrev"
         v-on:close="onToggleOpenState"
@@ -44,10 +46,14 @@ import Overlay from './components/Overlay.vue';
   },
 })
 export default class Glitter extends Vue {
+  // 画像のurlの配列
   @Prop() private images!: Array<string | CanonicalImage>;
 
   // ローディング画像を表示するかどうか？
   @Prop({ default: true }) private showLoading?: boolean;
+
+  // ページ番号を表示するかどうか？
+  @Prop({ default: true }) private showPageNumbers?: boolean;
 
   private store: Store = this.newStore();
 
