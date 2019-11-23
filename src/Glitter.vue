@@ -18,6 +18,7 @@
         v-bind:hasNext="store.state.hasNext"
         v-bind:hasPrev="store.state.hasPrev"
         v-bind:showPageNumbers="showPageNumbers"
+        v-bind:showCloseButton="showCloseButton"
         v-bind:pageNumber="store.state.pageNumber"
         v-on:next="onNext"
         v-on:prev="onPrev"
@@ -54,6 +55,9 @@ export default class Glitter extends Vue {
 
   // ページ番号を表示するかどうか？
   @Prop({ default: true }) private showPageNumbers?: boolean;
+
+  // 閉じるボタンを表示するかどうか？
+  @Prop({ default: false }) private showCloseButton?: boolean;
 
   private store: Store = this.newStore();
 

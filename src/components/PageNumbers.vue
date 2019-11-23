@@ -1,5 +1,8 @@
 <template>
-  <div class="glitter__page-numbers">
+  <div
+    class="glitter__page-numbers"
+    v-on:click.stop=""
+  >
     {{ pageNumber.currentPage }} / {{ pageNumber.maxPage }}
   </div>
 </template>
@@ -20,7 +23,8 @@ export default class PageNumbers extends Vue {
 .glitter {
   &__page-numbers {
     color: #fffafa;
-    font-size: 1.2em
+    font-size: 1.2em;
+    cursor: default;
   }
  }
 </style>

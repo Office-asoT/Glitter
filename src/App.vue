@@ -8,6 +8,7 @@
           caption: 'キャプションも指定できます' },
         require('./assets/job_syokugyou_taiken_syouboushi_girl.png'),
       ]"
+      v-bind:showCloseButton="true"
     >
       <div>
         <img src="./assets/job_kyuujinshi.png" />
