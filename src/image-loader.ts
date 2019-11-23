@@ -22,11 +22,17 @@ export class CachedImageLoader extends EventEmitter {
   }
 
   private async load() {
+    const loadOne = async (src: string, index: number) => {
+      await loadImage(src);
+      // 現在ロード済みの画像のindexをemitする
+      this.emit('progress', index + 1);
+    };
+
     const sources = this.images
       .map((image) => typeof image === 'string' ? image : image.src);
 
     try {
-      await Promise.all(sources.map(loadImage));
+      await Promise.all(sources.map(loadOne));
       this.emit('ready');
     } catch (e) {
       this.emit('error', e);

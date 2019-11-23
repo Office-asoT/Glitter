@@ -9,7 +9,9 @@
       v-on:close="onToggleOpenState"
     >
       <loading
+        v-bind:showLoadingProgress="showLoadingProgress"
         v-bind:isOpened="!store.state.isReady"
+        v-bind:loadingProgress="store.state.loadingProgress"
       />
       <gallery
         v-bind:isOpened="store.state.isReady"
@@ -54,14 +56,17 @@ export default class Glitter extends Vue {
   // 画像のurlの配列
   @Prop() private images!: Array<string | CanonicalImage>;
 
-  // ローディング画像を表示するかどうか？
-  @Prop({ default: true }) private showLoading?: boolean;
-
   // ページ番号を表示するかどうか？
   @Prop({ default: true }) private showPageNumbers?: boolean;
 
   // 閉じるボタンを表示するかどうか？
   @Prop({ default: true }) private showCloseButton?: boolean;
+
+  // ローディング画像を表示するかどうか？
+  @Prop({ default: true }) private showLoading?: boolean;
+
+  // ローディング画像表示時にプログレスを表示するかどうか？
+  @Prop({ default: false }) private showLoadingProgress?: boolean;
 
   private store: Store = this.newStore();
 
