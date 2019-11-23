@@ -19,7 +19,11 @@ export default class Store {
       isReady: false,
     });
 
-    const onReady = () => this.state.isReady = true;
+    const onReady = () => {
+      this.state.isReady = true;
+      imageLoader.removeListener('ready', onReady);
+      imageLoader.removeListener('error', onReady);
+    };
 
     if (opts.showLoading) {
       imageLoader.once('ready', onReady);
