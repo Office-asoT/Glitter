@@ -1,8 +1,10 @@
-import { ImageLoader } from '../image-loader';
+import ImageLoader from './image-loader';
 import { CanonicalImage } from '../image-item';
 import State, { LoadingProgress } from './state';
 
+// Storeのオプション
 export interface StoreOption {
+  // ローディングを表示するかどうか？
   showLoading?: boolean;
 }
 

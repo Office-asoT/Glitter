@@ -36,7 +36,7 @@
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 
 import Store from './store';
-import { CachedImageLoader } from './image-loader';
+import CachedImageLoader from './cached-image-loader';
 import ImageItem, { CanonicalImage } from './image-item';
 import Loading from './components/Loading.vue';
 import Gallery from './components/Gallery.vue';
