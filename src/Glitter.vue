@@ -61,7 +61,7 @@ export default class Glitter extends Vue {
   @Prop({ default: true }) private showPageNumbers?: boolean;
 
   // 閉じるボタンを表示するかどうか？
-  @Prop({ default: false }) private showCloseButton?: boolean;
+  @Prop({ default: true }) private showCloseButton?: boolean;
 
   private store: Store = this.newStore();
 
