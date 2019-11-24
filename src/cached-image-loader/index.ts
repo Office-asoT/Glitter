@@ -1,16 +1,21 @@
 import { EventEmitter } from 'events';
 
-import ImageLoader from './store/image-loader';
-import ImageItem from './image-item';
+import ImageLoader from '../store/image-loader';
+import ImageItem from '../image-item';
 
-// ブラウザのキャッシュを利用する画像ローダ
-export default class CachedImageLoader
+// キャッシュの方法
+export type CacheMethod = (image: ImageItem) => Promise<void>;
+
+// キャッシュを利用する画像ローダ
+export default class CachedImageLoader<T extends CacheMethod>
     extends EventEmitter implements ImageLoader {
   private imageItems: ImageItem[] = [];
+  private cache: T;
 
-  constructor(imageItems: ImageItem[]) {
+  constructor(imageItems: ImageItem[], cache: T) {
     super();
     this.imageItems = imageItems;
+    this.cache = cache;
     this.load();
   }
 
@@ -20,7 +25,7 @@ export default class CachedImageLoader
 
   private async load() {
     const loadOne = async (imageItem: ImageItem, index: number) => {
-      await loadImage(imageItem.src);
+      await this.cache(imageItem);
       // 現在ロード済みの画像のindexをemitする
       this.emit('progress', index + 1);
     };
@@ -31,20 +36,5 @@ export default class CachedImageLoader
     } catch (e) {
       this.emit('error', e);
     }
-  }
-}
-
-function loadImage(src: string): Promise<void> {
-  const img = new Image();
-
-  img.src = src;
-
-  if (img.complete) {
-    return Promise.resolve();
-  } else {
-    return new Promise((resolve, reject) => {
-      img.addEventListener('load', () => resolve());
-      img.addEventListener('error', (e) => reject(e));
-    });
   }
 }
