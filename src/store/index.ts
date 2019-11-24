@@ -1,5 +1,4 @@
 import ImageLoader from './image-loader';
-import { CanonicalImage } from '../image-item';
 import State, { LoadingProgress } from './state';
 
 // Storeのオプション
