@@ -1,7 +1,7 @@
 <template>
   <li
     class="glitter__gallery-item"
-    v-bind:class="{ selected: isSelected }"
+    v-show="isSelected"
     v-on:click.stop=""
   >
     <img
@@ -35,13 +35,8 @@ export default class OverlayItem extends Vue {
 <style scoped lang="less">
 .glitter {
   &__gallery-item {
-    display: none;
     padding: 1em;
     cursor: default;
-
-    &.selected {
-      display: block;
-    }
   }
 
   &__gallery-item-image {

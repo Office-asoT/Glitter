@@ -3,7 +3,7 @@
     <a
       href="#"
       class="glitter__next-arrow"
-      v-bind:class="{ visible: visible }"
+      v-show="visible"
       v-on:click.stop="$emit('next')"
     >
       <arrow-right-drop-circle title="Next" />

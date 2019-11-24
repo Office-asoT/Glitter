@@ -3,7 +3,7 @@
     <a
       href="#"
       class="glitter__prev-arrow"
-      v-bind:class="{ visible: visible }"
+      v-show="visible"
       v-on:click.stop="$emit('prev')"
     >
       <arrow-left-drop-circle title="Prev" />

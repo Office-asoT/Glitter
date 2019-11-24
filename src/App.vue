@@ -3,12 +3,6 @@
     <h1>Sample App for Glitter</h1>
     <glitter
       v-bind:images="[
-        { src: 'https://incloop.com/blog_neta/test/big.png?data=1',
-        caption: '函館1' },
-        { src: 'https://incloop.com/blog_neta/test/big.png?data=2',
-        caption: '函館2' },
-        { src: 'http://art5.photozou.jp/bin/photo/15364685/org.bin?size=1024',
-        caption: '函館3' },
         require('./assets/job_sokki_woman.png'),
         { src: require('./assets/job_syokugyou_taiken_kangoshi_boy.png'),
           caption: 'キャプションも指定できます' },

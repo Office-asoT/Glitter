@@ -1,7 +1,7 @@
 <template>
   <div
     class="glitter__gallery-container"
-    v-bind:class="{ visible: isOpened }"
+    v-show="isOpened"
   >
     <ul class="glitter__gallery">
       <li
@@ -46,7 +46,7 @@ import ImageItem from '../image-item';
     PageNumbers,
   },
 })
-export default class Overlay extends Vue {
+export default class Gallery extends Vue {
   @Prop() private isOpened!: boolean;
   @Prop() private selectedIndex!: number;
   @Prop() private imageItems!: ImageItem[];
@@ -58,17 +58,6 @@ export default class Overlay extends Vue {
 </script>
 
 <style scoped lang="less">
-@keyframes zoom {
-  0% {
-    transform: scale(0.5);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
 .glitter {
   &__gallery-container {
     position: absolute;
@@ -76,11 +65,6 @@ export default class Overlay extends Vue {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
-    display: none;
-
-    &.visible {
-      display: block;
-    }
   }
 
   &__gallery {

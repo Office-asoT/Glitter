@@ -1,10 +1,12 @@
 <template>
-  <div
-    class="glitter__overlay"
-    v-bind:class="{ visible: isOpened }"
-    v-on:click.stop="$emit('close')">
-    <slot></slot>
-  </div>
+  <transition name="overlay-zoom">
+    <div
+      class="glitter__overlay"
+      v-show="isOpened"
+      v-on:click.stop="$emit('close')">
+      <slot></slot>
+    </div>
+  </transition>
 </template>
 
 <script lang="ts">
@@ -31,8 +33,6 @@ export default class Overlay extends Vue {
 
 .glitter {
   &__overlay {
-    display: none;
-    
     position: fixed;
     top: 0;
     right: 0;
@@ -42,9 +42,14 @@ export default class Overlay extends Vue {
     z-index: 100;
     text-align: center;
 
-    &.visible {
-      display: block;
-      animation: zoom 180ms ease-out;
+    &.overlay-zoom {
+      &-enter-active {
+        animation: zoom 180ms ease-out;
+      }
+
+      &-leave-active {
+        animation: zoom 180ms ease-in reverse;
+      }
     }
   }
 }
