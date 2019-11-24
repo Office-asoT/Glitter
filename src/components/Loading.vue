@@ -4,7 +4,7 @@
 <template>
   <div
     class="glitter__loader-container"
-    v-bind:class="{ visible: isOpened }"
+    v-show="isOpened"
   >
     <svg class="glitter__loader-circular" viewBox="25 25 50 50">
       <circle class="glitter__loader-circular-path"
@@ -70,7 +70,6 @@ export default class Loading extends Vue {
 
 .glitter {
   &__loader-container {
-    display: none;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -81,10 +80,6 @@ export default class Loading extends Vue {
       content: '';
       display: block;
       padding-top: 100%;
-    }
-  
-    &.visible {
-      display: block;
     }
   }
 

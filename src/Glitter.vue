@@ -9,17 +9,17 @@
       v-on:close="onToggleOpenState"
     >
       <loading
-        v-bind:showLoadingProgress="showLoadingProgress"
         v-bind:isOpened="!store.state.isReady"
+        v-bind:showLoadingProgress="showLoadingProgress"
         v-bind:loadingProgress="store.state.loadingProgress"
       />
       <gallery
         v-bind:isOpened="store.state.isReady"
+        v-bind:showPageNumbers="showPageNumbers"
         v-bind:selectedIndex="store.state.selectedIndex"
         v-bind:imageItems="imageItems"
         v-bind:hasNext="store.state.hasNext"
         v-bind:hasPrev="store.state.hasPrev"
-        v-bind:showPageNumbers="showPageNumbers"
         v-bind:pageNumber="store.state.pageNumber"
         v-on:next="onNext"
         v-on:prev="onPrev"
