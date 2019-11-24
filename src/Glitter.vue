@@ -37,6 +37,7 @@ import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 
 import Store from './store';
 import CachedImageLoader from './cached-image-loader';
+import browserCache from './cached-image-loader/browser-cache';
 import ImageItem, { CanonicalImage } from './image-item';
 import Loading from './components/Loading.vue';
 import Gallery from './components/Gallery.vue';
@@ -92,9 +93,11 @@ export default class Glitter extends Vue {
     this.store.succeedImage();
   }
 
+  // storeはimagesの読み込みイベントを担っているので
+  // imagesが変更されたときにstore毎置き換えるためのメソッド
   private newStore() {
     const imageItems = this.images.map(ImageItem.create);
-    const loader = new CachedImageLoader(imageItems);
+    const loader = new CachedImageLoader(imageItems, browserCache);
     return new Store(loader, { showLoading: this.showLoading });
   }
 }
