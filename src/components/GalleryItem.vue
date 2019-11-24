@@ -6,11 +6,11 @@
   >
     <img
       class="glitter__gallery-item-image"
-      v-bind:src="image.src"
-      v-bind:alt="image.caption"
-      v-bind:title="image.caption"
+      v-bind:src="imageItem.src"
+      v-bind:alt="imageItem.caption"
+      v-bind:title="imageItem.caption"
     />
-    <gallery-item-caption v-bind:text="image.caption" />
+    <gallery-item-caption v-bind:text="imageItem.caption" />
   </li>
 </template>
 
@@ -18,7 +18,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
 import GalleryItemCaption from './GalleryItemCaption.vue';
-import { CanonicalImage } from '../image-item';
+import ImageItem from '../image-item';
 
 // ギャラリー向けの画像のコンポーネント
 @Component({
@@ -27,7 +27,7 @@ import { CanonicalImage } from '../image-item';
   },
 })
 export default class OverlayItem extends Vue {
-  @Prop() private image!: CanonicalImage;
+  @Prop() private imageItem!: ImageItem;
   @Prop() private isSelected!: boolean;
 }
 </script>

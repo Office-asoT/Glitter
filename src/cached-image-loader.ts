@@ -1,32 +1,32 @@
 import { EventEmitter } from 'events';
 
 import ImageLoader from './store/image-loader';
-import { CanonicalImage } from './image-item';
+import ImageItem from './image-item';
 
 // ブラウザのキャッシュを利用する画像ローダ
 export default class CachedImageLoader
     extends EventEmitter implements ImageLoader {
-  private images: Array<CanonicalImage | string> = [];
+  private imageItems: ImageItem[] = [];
 
-  constructor(images: Array<CanonicalImage | string>) {
+  constructor(imageItems: ImageItem[]) {
     super();
-    this.images = images;
+    this.imageItems = imageItems;
     this.load();
   }
 
   public get size() {
-    return this.images.length;
+    return this.imageItems.length;
   }
 
   private async load() {
-    const loadOne = async (image: CanonicalImage | string, index: number) => {
-      await loadImage(typeof image === 'string' ? image : image.src);
+    const loadOne = async (imageItem: ImageItem, index: number) => {
+      await loadImage(imageItem.src);
       // 現在ロード済みの画像のindexをemitする
       this.emit('progress', index + 1);
     };
 
     try {
-      await Promise.all(this.images.map(loadOne));
+      await Promise.all(this.imageItems.map(loadOne));
       this.emit('ready');
     } catch (e) {
       this.emit('error', e);
