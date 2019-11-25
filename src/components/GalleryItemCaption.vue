@@ -8,7 +8,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component
-export default class OverlayItemCaption extends Vue {
+export default class GalleryItemCaption extends Vue {
   @Prop() private text!: string;
 }
 </script>
