@@ -53,8 +53,8 @@ describe('Loading.vue', () => {
 function props(opts: any) {
   return {
     showLoadingProgress: false,
-    isOpened:false,
+    isOpened: false,
     loadingProgress: {},
-    ...opts
-  }
+    ...opts,
+  };
 }
