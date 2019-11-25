@@ -14,7 +14,7 @@ describe('Overlay.vue', () => {
       it('closeイベントを発行していること', () => {
         const propsData = { isOpened: true };
         const wrapper = shallowMount(Overlay, { propsData });
-        wrapper.trigger('click')
+        wrapper.trigger('click');
         expect(wrapper.emitted().close).toBeTruthy();
       });
     });

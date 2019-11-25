@@ -3,10 +3,16 @@ name: CI
 on: [push]
 
 jobs:
-  build:
-
+  lint:
     runs-on: ubuntu-latest
-
+    steps:
+    - uses: actions/checkout@v1
+    - name: Run lint
+      run: |
+        npm install @vue/cli@3.12.0
+        npm run lint
+  test:
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
     - name: Run unit tests
