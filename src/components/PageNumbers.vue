@@ -10,7 +10,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
-import PageNumber from '../store/state';
+import { PageNumber } from '../state';
 
 // ページ番号を表示するコンポーネント
 @Component({})

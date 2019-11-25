@@ -30,7 +30,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
-import PageNumber from '../store/state';
+import { PageNumber } from '../state';
 import GalleryItem from './GalleryItem.vue';
 import NextArrow from './buttons/NextArrow.vue';
 import PrevArrow from './buttons/PrevArrow.vue';

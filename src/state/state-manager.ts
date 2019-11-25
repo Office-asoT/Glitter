@@ -1,18 +1,18 @@
 import ImageLoader from './image-loader';
-import State, { LoadingProgress } from './state';
+import State, { LoadingProgress } from '.';
 
-// Storeのオプション
-export interface StoreOption {
+// StateManagerのオプション
+export interface StateManagerOption {
   // ローディングを表示するかどうか？
   showLoading?: boolean;
 }
 
 // 状態管理用のクラス
-export default class Store {
+export default class StateManager {
   // 実際の状態を保持するオブジェクト
   public state: State;
 
-  constructor(imageLoader: ImageLoader, opts: StoreOption = {}) {
+  constructor(imageLoader: ImageLoader, opts: StateManagerOption = {}) {
     this.state = new State({
       isOpened: false,
       selectedIndex: 0,

@@ -1,6 +1,6 @@
 import { EventEmitter } from 'events';
 
-// Storeで利用する画像ローダのインタフェース
+// StateManagerで利用する画像ローダのインタフェース
 export default interface ImageLoader extends EventEmitter {
   // ロードする画像の数
   readonly size: number;

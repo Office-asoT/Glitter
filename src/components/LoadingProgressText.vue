@@ -7,7 +7,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
-import { LoadingProgress } from '../store/state';
+import { LoadingProgress } from '../state';
 
 @Component
 export default class LoadingProgressText extends Vue {
