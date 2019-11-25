@@ -1,4 +1,4 @@
-import State from '@/store/state';
+import State from '@/state';
 
 describe('State', () => {
   describe('set selectedIndex', () => {

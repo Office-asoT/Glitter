@@ -5,22 +5,22 @@
   >
     <slot></slot>
     <overlay
-      v-bind:isOpened="store.state.isOpened"
+      v-bind:isOpened="stateManager.state.isOpened"
       v-on:close="onToggleOpenState"
     >
       <loading
-        v-bind:isOpened="!store.state.isReady"
+        v-bind:isOpened="!stateManager.state.isReady"
         v-bind:showLoadingProgress="showLoadingProgress"
-        v-bind:loadingProgress="store.state.loadingProgress"
+        v-bind:loadingProgress="stateManager.state.loadingProgress"
       />
       <gallery
-        v-bind:isOpened="store.state.isReady"
+        v-bind:isOpened="stateManager.state.isReady"
         v-bind:showPageNumbers="showPageNumbers"
-        v-bind:selectedIndex="store.state.selectedIndex"
+        v-bind:selectedIndex="stateManager.state.selectedIndex"
         v-bind:imageItems="imageItems"
-        v-bind:hasNext="store.state.hasNext"
-        v-bind:hasPrev="store.state.hasPrev"
-        v-bind:pageNumber="store.state.pageNumber"
+        v-bind:hasNext="stateManager.state.hasNext"
+        v-bind:hasPrev="stateManager.state.hasPrev"
+        v-bind:pageNumber="stateManager.state.pageNumber"
         v-on:next="onNext"
         v-on:prev="onPrev"
       />
@@ -35,7 +35,7 @@
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 
-import Store from './store';
+import StateManager from './state/state-manager';
 import CachedImageLoader from './cached-image-loader';
 import browserCache from './cached-image-loader/browser-cache';
 import ImageItem, { CanonicalImage } from './image-item';
@@ -69,11 +69,11 @@ export default class Glitter extends Vue {
   // ローディング画像表示時にプログレスを表示するかどうか？
   @Prop({ default: false }) private showLoadingProgress?: boolean;
 
-  private store: Store = this.newStore();
+  private stateManager: StateManager = this.newStateManager();
 
   @Watch('images')
   private onImagesChanged() {
-    this.store = this.newStore();
+    this.stateManager = this.newStateManager();
   }
 
   private get imageItems() {
@@ -81,24 +81,22 @@ export default class Glitter extends Vue {
   }
 
   private onToggleOpenState() {
-    this.store.toggleOpenState();
-    this.store.resetIndex();
+    this.stateManager.toggleOpenState();
+    this.stateManager.resetIndex();
   }
 
   private onNext() {
-    this.store.proceedImage();
+    this.stateManager.proceedImage();
   }
 
   private onPrev() {
-    this.store.succeedImage();
+    this.stateManager.succeedImage();
   }
 
-  // storeはimagesの読み込みイベントを担っているので
-  // imagesが変更されたときにstore毎置き換えるためのメソッド
-  private newStore() {
+  private newStateManager() {
     const imageItems = this.images.map(ImageItem.create);
     const loader = new CachedImageLoader(imageItems, browserCache);
-    return new Store(loader, { showLoading: this.showLoading });
+    return new StateManager(loader, { showLoading: this.showLoading });
   }
 }
 </script>

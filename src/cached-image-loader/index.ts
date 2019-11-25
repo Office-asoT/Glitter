@@ -1,6 +1,6 @@
 import { EventEmitter } from 'events';
 
-import ImageLoader from '../store/image-loader';
+import ImageLoader from '../state/image-loader';
 import ImageItem from '../image-item';
 
 // キャッシュの方法
