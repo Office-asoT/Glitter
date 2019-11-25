@@ -43,15 +43,19 @@ describe('State', () => {
 
   describe('get hasPrev', () => {
     describe('selectedIndexが0のとき', () => {
-      const state = new State(defaultStateData());
-      state.selectedIndex = 0;
-      expect(state.hasPrev).toBe(false);
+      it('falseであること', () => {
+        const state = new State(defaultStateData());
+        state.selectedIndex = 0;
+        expect(state.hasPrev).toBe(false);
+      });
     });
 
     describe('0 < selectedIndexのとき', () => {
-      const state = new State(defaultStateData());
-      state.selectedIndex = 1;
-      expect(state.hasPrev).toBe(true);
+      it('trueであること', () => {
+        const state = new State(defaultStateData());
+        state.selectedIndex = 1;
+        expect(state.hasPrev).toBe(true);
+      });
     });
   });
 });
