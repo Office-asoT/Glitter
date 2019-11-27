@@ -122,22 +122,70 @@ describe('StateManager', () => {
     });
   });
 
-  describe('#proceedImage()', () => {
-    describe('今のindexを次にすすめてもnumOfImagesを越えないとき', () => {
-      it('stateのindexをすすめていること', () => {
-        const store = new StateManager(new DummyImageLoader(3));
-        store.state.selectedIndex = 1;
-        store.proceedImage();
-        expect(store.state.selectedIndex).toBe(2);
+  describe('opts.repatImagesがfalseのとき', () => {
+    describe('#proceedImage()', () => {
+      describe('今のindexを次にすすめてもnumOfImagesを越えないとき', () => {
+        it('stateのindexをすすめていること', () => {
+          const store = new StateManager(new DummyImageLoader(3));
+          store.state.selectedIndex = 1;
+          store.proceedImage();
+          expect(store.state.selectedIndex).toBe(2);
+        });
+      });
+
+      describe('今のindexを次にすすめてもlimitを越るとき', () => {
+        it('stateのindexをすすめていないこと', () => {
+          const store = new StateManager(new DummyImageLoader(3));
+          store.state.selectedIndex = 2;
+          store.proceedImage();
+          expect(store.state.selectedIndex).toBe(2);
+        });
       });
     });
 
-    describe('今のindexを次にすすめてもlimitを越るとき', () => {
-      it('stateのindexをすすめていないこと', () => {
-        const store = new StateManager(new DummyImageLoader(3));
-        store.state.selectedIndex = 2;
-        store.proceedImage();
-        expect(store.state.selectedIndex).toBe(2);
+    describe('#succeedImage()', () => {
+      describe('今のindexを前にもどしても0を下回らないとき', () => {
+        it('stateのindexを前にもどしていること', () => {
+          const store = new StateManager(new DummyImageLoader(3));
+          store.state.selectedIndex = 1;
+          store.succeedImage();
+          expect(store.state.selectedIndex).toBe(0);
+        });
+      });
+
+      describe('今のindexを前にもどすと0を下回るとき', () => {
+        it('stateのindexを戻していないこと', () => {
+          const store = new StateManager(new DummyImageLoader(3));
+          store.state.selectedIndex = 0;
+          store.succeedImage();
+          expect(store.state.selectedIndex).toBe(0);
+        });
+      });
+    });
+  });
+
+  describe('opts.repatImagesがtrueのとき', () => {
+    describe('#proceedImage()', () => {
+      describe('今のindexを次にすすめてもlimitを越るとき', () => {
+        it('stateのindexを0にしていること', () => {
+          const loader = new DummyImageLoader(3);
+          const store = new StateManager(loader, { repeatImages: true });
+          store.state.selectedIndex = 2;
+          store.proceedImage();
+          expect(store.state.selectedIndex).toBe(0);
+        });
+      });
+    });
+
+    describe('#succeedImage()', () => {
+      describe('今のindexを前にもどすと0を下回るとき', () => {
+        it('stateのindexをlimit - 1にしていること', () => {
+          const loader = new DummyImageLoader(3);
+          const store = new StateManager(loader, { repeatImages: true });
+          store.state.selectedIndex = 0;
+          store.succeedImage();
+          expect(store.state.selectedIndex).toBe(2);
+        });
       });
     });
   });

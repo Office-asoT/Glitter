@@ -5,6 +5,8 @@ import State, { LoadingProgress } from '.';
 export interface StateManagerOption {
   // ローディングを表示するかどうか？
   showLoading?: boolean;
+  // 画像をリピートして表示するか(ループするか)？
+  repeatImages?: boolean;
 }
 
 // 状態管理用のクラス
@@ -12,15 +14,20 @@ export default class StateManager {
   // 実際の状態を保持するオブジェクト
   public state: State;
 
+  private opts: StateManagerOption;
+
   constructor(imageLoader: ImageLoader, opts: StateManagerOption = {}) {
     this.state = new State({
       isOpened: false,
       selectedIndex: 0,
       numOfImages: imageLoader.size,
+      repeatImages: opts.repeatImages ? opts.repeatImages : false,
       isReady: false,
     });
 
-    const onProgress = (loadedImageCount: number) => {
+    this.opts = opts;
+
+    const onProgress = (x: number) => {
       this.state.loadedImageCount += 1;
     };
 
@@ -31,7 +38,7 @@ export default class StateManager {
       imageLoader.removeListener('error', onReady);
     };
 
-    if (opts.showLoading) {
+    if (this.opts.showLoading) {
       imageLoader.once('ready', onReady);
       // errorになってもどうしようもないのでisReady=trueにしてしまう
       imageLoader.once('error', onReady);
@@ -53,13 +60,13 @@ export default class StateManager {
     const { selectedIndex: currentIndex, numOfImages } = this.state;
     this.state.selectedIndex = currentIndex + 1 < numOfImages ?
       currentIndex + 1 :
-      currentIndex;
+      (this.opts.repeatImages ? 0 : currentIndex);
   }
 
   public succeedImage() {
-    const { selectedIndex: currentIndex } = this.state;
+    const { selectedIndex: currentIndex, numOfImages } = this.state;
     this.state.selectedIndex = currentIndex - 1 < 0 ?
-      0 :
+      (this.opts.repeatImages ? numOfImages - 1 : 0) :
       currentIndex - 1;
   }
 }
