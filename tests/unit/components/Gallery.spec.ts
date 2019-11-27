@@ -136,7 +136,7 @@ describe('Gallery.vue', () => {
         const wrapper = shallowMount(Gallery, { propsData });
         expect(wrapper.find(PageNumbers).props().pageNumber).toBe(pageNumber);
       });
-});
+    });
   });
 
   describe('propsのisOpened=falseのとき', () => {
