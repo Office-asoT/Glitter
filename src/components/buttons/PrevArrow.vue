@@ -3,7 +3,7 @@
     <a
       href="javascript:void 0"
       class="glitter__prev-arrow"
-      v-show="visible"
+      v-show="isVisible"
       v-on:click.stop="$emit('prev')"
     >
       <arrow-left-drop-circle title="Prev" />
@@ -23,7 +23,7 @@ import 'vue-material-design-icons/styles.css';
   },
 })
 export default class PrevArrow extends Vue {
-  @Prop() private visible!: boolean;
+  @Prop() private isVisible!: boolean;
 }
 </script>
 

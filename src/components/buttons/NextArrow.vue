@@ -3,7 +3,7 @@
     <a
       href="javascript:void 0"
       class="glitter__next-arrow"
-      v-show="visible"
+      v-show="isVisible"
       v-on:click.stop="$emit('next')"
     >
       <arrow-right-drop-circle title="Next" />
@@ -23,7 +23,7 @@ import 'vue-material-design-icons/styles.css';
   },
 })
 export default class NextArrow extends Vue {
-  @Prop() private visible!: boolean;
+  @Prop() private isVisible!: boolean;
 }
 </script>
 

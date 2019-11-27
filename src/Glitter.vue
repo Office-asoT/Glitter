@@ -16,6 +16,7 @@
       <gallery
         v-bind:isOpened="stateManager.state.isReady"
         v-bind:showPageNumbers="showPageNumbers"
+        v-bind:repeatImages="repeatImages"
         v-bind:selectedIndex="stateManager.state.selectedIndex"
         v-bind:imageItems="imageItems"
         v-bind:hasNext="stateManager.state.hasNext"

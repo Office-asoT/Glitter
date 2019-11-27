@@ -20,11 +20,11 @@
       />
     </swipable-unordered-list>
     <prev-arrow
-      v-bind:visible="hasPrev"
+      v-bind:isVisible="repeatImages || hasPrev"
       v-on:prev="$emit('prev')"
     />
     <next-arrow
-      v-bind:visible="hasNext"
+      v-bind:isVisible="repeatImages || hasNext"
       v-on:next="$emit('next')"
     />
     <page-numbers
@@ -62,6 +62,7 @@ export default class Gallery extends Vue {
   @Prop() private hasNext!: boolean;
   @Prop() private hasPrev!: boolean;
   @Prop() private showPageNumbers!: boolean;
+  @Prop() private repeatImages!: boolean;
   @Prop() private pageNumber!: PageNumber;
 }
 </script>

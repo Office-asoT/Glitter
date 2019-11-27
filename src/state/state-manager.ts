@@ -21,7 +21,6 @@ export default class StateManager {
       isOpened: false,
       selectedIndex: 0,
       numOfImages: imageLoader.size,
-      repeatImages: opts.repeatImages ? opts.repeatImages : false,
       isReady: false,
     });
 
