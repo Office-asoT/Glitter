@@ -3,15 +3,22 @@
     class="glitter__gallery-container"
     v-show="isOpened"
   >
-    <ul class="glitter__gallery">
+    <swipable-unordered-list
+      v-bind:className="'glitter__gallery'"
+      v-bind:numOfImages="imageItems.length"
+      v-bind:selectedIndex="selectedIndex"
+      v-on:prev="$emit('prev')"
+      v-on:next="$emit('next')"
+    >
       <li
         is="gallery-item"
         v-for="(imageItem, index) in imageItems"
         v-bind:key="index"
+        v-bind:numOfImages="imageItems.length"
         v-bind:isSelected="index === selectedIndex"
         v-bind:imageItem="imageItem"
       />
-    </ul>
+    </swipable-unordered-list>
     <prev-arrow
       v-bind:isVisible="repeatImages || hasPrev"
       v-on:prev="$emit('prev')"
@@ -32,6 +39,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 
 import { PageNumber } from '../state';
 import GalleryItem from './GalleryItem.vue';
+import SwipableUnorderedList from './SwipableUnorderedList.vue';
 import NextArrow from './buttons/NextArrow.vue';
 import PrevArrow from './buttons/PrevArrow.vue';
 import PageNumbers from './PageNumbers.vue';
@@ -41,6 +49,7 @@ import ImageItem from '../image-item';
 @Component({
   components: {
     GalleryItem,
+    SwipableUnorderedList,
     NextArrow,
     PrevArrow,
     PageNumbers,

@@ -1,7 +1,7 @@
 <template>
   <li
     class="glitter__gallery-item"
-    v-show="isSelected"
+    v-bind:style="styleObject"
     v-on:click.stop=""
   >
     <img
@@ -26,9 +26,16 @@ import ImageItem from '../image-item';
     GalleryItemCaption,
   },
 })
-export default class OverlayItem extends Vue {
+export default class GalleryItem extends Vue {
   @Prop() private imageItem!: ImageItem;
   @Prop() private isSelected!: boolean;
+  @Prop() private numOfImages!: number;
+
+  private get styleObject() {
+    return {
+      width: `${1 / this.numOfImages * 100}%`,
+    };
+  }
 }
 </script>
 
