@@ -69,6 +69,9 @@ export default class Glitter extends Vue {
   // ローディング画像表示時にプログレスを表示するかどうか？
   @Prop({ default: true }) private showLoadingProgress?: boolean;
 
+  // 画像をリピートして表示するか(ループするか)？
+  @Prop({ default: false }) private repeatImages?: boolean;
+
   private stateManager: StateManager = this.newStateManager();
 
   @Watch('images')
@@ -96,7 +99,8 @@ export default class Glitter extends Vue {
   private newStateManager() {
     const imageItems = this.images.map(ImageItem.create);
     const loader = new CachedImageLoader(imageItems, browserCache);
-    return new StateManager(loader, { showLoading: this.showLoading });
+    const { showLoading, repeatImages } = this;
+    return new StateManager(loader, { showLoading, repeatImages });
   }
 }
 </script>
