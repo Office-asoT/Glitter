@@ -67,7 +67,7 @@ export default class Glitter extends Vue {
   @Prop({ default: true }) private showLoading?: boolean;
 
   // ローディング画像表示時にプログレスを表示するかどうか？
-  @Prop({ default: false }) private showLoadingProgress?: boolean;
+  @Prop({ default: true }) private showLoadingProgress?: boolean;
 
   private stateManager: StateManager = this.newStateManager();
 
