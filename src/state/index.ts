@@ -13,7 +13,6 @@ export default class State {
   private _selectedIndex: number;
   private _numOfImages: number;
   private _isReady: boolean;
-  private _repeatImages: boolean;
   private _loadedImageCount: number = 0;
   /* tslint:enable variable-name */
 
@@ -21,20 +20,17 @@ export default class State {
     isOpened = false,
     selectedIndex = 0,
     isReady = false,
-    repeatImages = false,
     numOfImages,
   }: {
     isOpened: boolean,
     selectedIndex: number,
     isReady: boolean,
-    repeatImages: boolean,
     numOfImages: number,
   }) {
     this._isOpened = isOpened;
     this._selectedIndex = selectedIndex;
     this._numOfImages = numOfImages;
     this._isReady = isReady;
-    this._repeatImages = repeatImages;
   }
 
   public get isOpened() { return this._isOpened; }
@@ -60,14 +56,12 @@ export default class State {
     this._loadedImageCount = value;
   }
 
-  public get repeatImagees() { return this._repeatImages; }
-
   public get hasNext() {
-    return this.repeatImagees || this.selectedIndex + 1 < this.numOfImages;
+    return this.selectedIndex + 1 < this.numOfImages;
   }
 
   public get hasPrev() {
-    return this.repeatImagees || this.selectedIndex > 0;
+    return this.selectedIndex > 0;
   }
 
   public get loadingProgress() {
