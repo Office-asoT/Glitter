@@ -1,7 +1,7 @@
 <template>
   <div class="glitter__close-button-container">
     <a
-      href="#"
+      href="javascript:void 0"
       class="glitter__close"
       v-on:click.stop="$emit('close')"
     >

@@ -1,7 +1,7 @@
 <template>
   <div class="glitter__arrow-button-container">
     <a
-      href="#"
+      href="javascript:void 0"
       class="glitter__next-arrow"
       v-show="visible"
       v-on:click.stop="$emit('next')"
