@@ -7,9 +7,10 @@ export enum Direction {
 // siwpeの管理をする
 export default class SwipeManager {
   public static getClientX(e: MouseEvent) {
-    return ((e instanceof TouchEvent && e.changedTouches)
-            ? e.changedTouches[0]
-            : e).clientX;
+    return (
+      ('TouchEvent' in window && e instanceof TouchEvent && e.changedTouches)
+        ? e.changedTouches[0]
+        : e).clientX;
   }
 
   private numOfImages: number;
