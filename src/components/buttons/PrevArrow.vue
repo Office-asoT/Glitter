@@ -1,9 +1,11 @@
 <template>
-  <div class="glitter__arrow-button-container">
+  <div
+    class="glitter__arrow-button-container"
+    v-show="isVisible"
+  >
     <a
       href="javascript:void 0"
       class="glitter__prev-arrow"
-      v-show="isVisible"
       v-on:click.stop="$emit('prev')"
     >
       <arrow-left-drop-circle title="Prev" />
