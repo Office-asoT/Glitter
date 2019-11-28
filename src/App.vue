@@ -3,16 +3,24 @@
     <h1>Sample App for Glitter</h1>
     <glitter
       v-bind:images="[
-        require('./assets/job_sokki_woman.png'),
-        { src: require('./assets/job_syokugyou_taiken_kangoshi_boy.png'),
-          caption: 'キャプションも指定できます' },
-        require('./assets/job_syokugyou_taiken_syouboushi_girl.png'),
+        { src: 'https://images.unsplash.com/photo-1510279931157-4ca63af8a363',
+          caption: 'person holding gray stainless steel teapot and white ceramic teacup' },
+        { src: 'https://images.unsplash.com/photo-1500353391678-d7b57979d6d2',
+          caption: 'coffee and succulent plants' },
+        { src: 'https://images.unsplash.com/photo-1506619216599-9d16d0903dfd',
+          caption: 'brown ceramic teacup' },
+        { src: 'https://images.unsplash.com/photo-1489533119213-66a5cd877091',
+          caption: 'white ceramic mug on table' },
+        { src: 'https://images.unsplash.com/photo-1459755486867-b55449bb39ff',
+          caption: 'coffee beans on table' },
       ]"
       v-bind:showCloseButton="true"
       v-bind:showLoadingProgress="true"
     >
       <div>
-        <img src="./assets/job_kyuujinshi.png" />
+        <img class="top"
+             src="https://images.unsplash.com/photo-1506619216599-9d16d0903dfd"
+        />
         <p>ここが表紙として表示されます</p>
       </div>
     </glitter>
@@ -38,5 +46,10 @@ export default class App extends Vue {}
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.top {
+  width: 500px;
+  max-width: 60vw;
 }
 </style>

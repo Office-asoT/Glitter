@@ -1,6 +1,6 @@
 <template>
   <div class="glitter__loading-progress-text">
-    Loading&nbsp;{{ loadingProgress | percentage }};
+    Loading&nbsp;{{ loadingProgress | percentage }}
   </div>
 </template>
 
