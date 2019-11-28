@@ -105,10 +105,3 @@ export default class Glitter extends Vue {
   }
 }
 </script>
-
-<style scoped lang="less">
-.glitter {
-  font-size: 16px;
-  cursor: pointer;
-}
-</style>

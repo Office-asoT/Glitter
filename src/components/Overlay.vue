@@ -33,6 +33,8 @@ export default class Overlay extends Vue {
 
 .glitter {
   &__overlay {
+    font-size: 16px;
+    cursor: pointer;
     position: fixed;
     top: 0;
     right: 0;
