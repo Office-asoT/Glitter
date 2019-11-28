@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name Glitter src/Glitter.vue",
+    "build": "TARGET=lib vue-cli-service build --target lib --name Glitter src/Glitter.vue",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint --no-fix"
   },
