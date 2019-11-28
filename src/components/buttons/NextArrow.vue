@@ -8,20 +8,20 @@
       class="glitter__next-arrow"
       v-on:click.stop="$emit('next')"
     >
-      <arrow-right-drop-circle title="Next" />
+      <chevron-right title="Next" />
     </a>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import ArrowRightDropCircle from 'vue-material-design-icons/ArrowRightDropCircle.vue';
+import ChevronRight from 'vue-material-design-icons/ChevronRight.vue';
 
 import 'vue-material-design-icons/styles.css';
 
 @Component({
   components: {
-    ArrowRightDropCircle,
+    ChevronRight,
   },
 })
 export default class NextArrow extends Vue {
