@@ -10,7 +10,7 @@
 
 
 #+begin_src shell
-npm install git://github.com/Office-asoT/Glitter.git#0.1.9
+npm install git://github.com/Office-asoT/Glitter.git#0.1.10
 #+end_src
 
 * 使い方
