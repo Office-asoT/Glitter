@@ -8,12 +8,12 @@
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "TARGET=lib vue-cli-service build --target lib --name Glitter src/Glitter.vue",
+    "build": "vue-cli-service build --target lib --name Glitter src/Glitter.vue",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint --no-fix"
   },
   "dependencies": {
-    "core-js": "^3.3.2",
+    "core-js": "^3.4.5",
     "events": "^3.0.0",
     "vue": "^2.6.10",
     "vue-class-component": "^7.1.0",
