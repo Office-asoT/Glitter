@@ -12,8 +12,8 @@ import percentage from '../filters/percentage';
 
 @Component({
   filters: {
-    percentage
-  }
+    percentage,
+  },
 })
 export default class LoadingProgressText extends Vue {
   @Prop() private loadingProgress!: LoadingProgress;
