@@ -23,7 +23,6 @@ export default class PageNumbers extends Vue {
 .glitter {
   &__page-numbers {
     color: #fffafa;
-    font-size: 1.2em;
     cursor: default;
   }
  }

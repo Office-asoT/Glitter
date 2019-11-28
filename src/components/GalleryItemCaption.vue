@@ -17,7 +17,6 @@ export default class GalleryItemCaption extends Vue {
 .glitter {
   &__gallery-item-caption {
     color: #fffafa;
-    font-size: 1.2em
   }
 }
 </style>
