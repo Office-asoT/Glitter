@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>Sample App for Glitter</h1>
+    <h1 class="title">Sample App for Glitter</h1>
     <glitter
       v-bind:images="[
         { src: 'https://images.unsplash.com/photo-1510279931157-4ca63af8a363',
@@ -21,7 +21,7 @@
         <img class="top"
              src="https://images.unsplash.com/photo-1506619216599-9d16d0903dfd"
         />
-        <p>ここが表紙として表示されます</p>
+        <p>Here will be displayed as a cover.</p>
       </div>
     </glitter>
   </div>
@@ -51,5 +51,8 @@ export default class App extends Vue {}
 .top {
   width: 500px;
   max-width: 60vw;
+  cursor: pointer;
+  margin-top: 30px;
+  font-size: 18px;
 }
 </style>
