@@ -1,6 +1,6 @@
 <template>
   <div class="glitter__loading-progress-text">
-    Loading&nbsp;{{ progress }}&#37;
+    Loading&nbsp;{{ loadingProgress | percentage }};
   </div>
 </template>
 
@@ -8,15 +8,15 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
 import { LoadingProgress } from '../state';
+import percentage from '../filters/percentage';
 
-@Component
+@Component({
+  filters: {
+    percentage,
+  },
+})
 export default class LoadingProgressText extends Vue {
   @Prop() private loadingProgress!: LoadingProgress;
-
-  private get progress(): number {
-    const { currentPage, maxPage } = this.loadingProgress;
-    return Math.ceil(currentPage / maxPage * 100);
-  }
 }
 </script>
 
