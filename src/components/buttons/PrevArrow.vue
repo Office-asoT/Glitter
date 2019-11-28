@@ -8,20 +8,20 @@
       class="glitter__prev-arrow"
       v-on:click.stop="$emit('prev')"
     >
-      <arrow-left-drop-circle title="Prev" />
+      <chevron-left title="Prev" />
     </a>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import ArrowLeftDropCircle from 'vue-material-design-icons/ArrowLeftDropCircle.vue';
+import ChevronLeft from 'vue-material-design-icons/ChevronLeft.vue';
 
 import 'vue-material-design-icons/styles.css';
 
 @Component({
   components: {
-    ArrowLeftDropCircle,
+    ChevronLeft,
   },
 })
 export default class PrevArrow extends Vue {

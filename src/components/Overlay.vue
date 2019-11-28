@@ -13,7 +13,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
 // Overlayーを表示するコンポーネント
-@Component({})
+@Component
 export default class Overlay extends Vue {
   @Prop() private isOpened!: boolean;
 }
