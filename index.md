@@ -4,9 +4,9 @@
 ---
 
 <script src="https://unpkg.com/vue"></script>
-<script src="https://unpkg.com/asot/glitter/dist/Glitter.umd.min.js"></script>
+<script src="https://unpkg.com/@asot/glitter/dist/Glitter.umd.min.js"></script>
 
-<link rel="stylesheet" href="https://unpkg.com/asot/glitter/dist//Glitter.css">
+<link rel="stylesheet" href="https://unpkg.com/@asot/glitter/dist//Glitter.css">
 
 <div id="app">
   <glitter v-bind:images="[
@@ -97,8 +97,8 @@ Include @asot/glitter in your page then use it.
 
 {% highlight html %}
 <script src="https://unpkg.com/vue"></script>
-<script src="https://unpkg.com/asot/glitter/dist/Glitter.umd.min.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/asot/glitter/dist//Glitter.css">
+<script src="https://unpkg.com/@asot/glitter/dist/Glitter.umd.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/@asot/glitter/dist//Glitter.css">
 
 <div id="app">
   <glitter v-bind:images="[
