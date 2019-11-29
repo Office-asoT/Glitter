@@ -3,6 +3,10 @@
 
 @import "{{ site.theme }}";
 
+body a, body a:hover, body a:link, body a:visited, body a:active {
+  color: #ed6d45;
+}
+
 .asot-logo {
   max-width: 45%;
   padding: 5px 5px 0;
