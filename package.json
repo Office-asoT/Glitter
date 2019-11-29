@@ -1,7 +1,9 @@
 {
-  "name": "glitter",
+  "name": "@asot/glitter",
   "version": "0.1.2",
   "private": false,
+  "homepage": "https://office-asot.github.io/Glitter/",
+  "license": "MIT",
   "main": "dist/Glitter.common.js",
   "files": [
     "dist"
@@ -11,6 +13,13 @@
     "build": "vue-cli-service build --target lib --name Glitter src/Glitter.vue",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint --no-fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Office-asoT/Glitter.git"
+  },
+  "peerDependencies": {
+    "vue": "2.x"
   },
   "dependencies": {
     "core-js": "^3.4.5",
