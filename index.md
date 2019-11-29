@@ -81,7 +81,8 @@ Then register Glitter in your components and use it:
 </template>
 
 <script>
-import Glitter from 'glitter';
+import Glitter from '@asot/glitter';
+import '@asot/glitter/dist//Glitter.css'
 
 new Vue({
   components: {
