@@ -1,43 +1,105 @@
-#+TITLE: Glitter
+#+TITLE: @asot/glitter
 
-画像ギャラリーのVueコンポーネント
-
-[[https://github.com/imgix/luminous][Luminous]](「明るい」) を参考にしてglitter(「煌めき」)と名付けました。
+Vue 2.x向けのLightboxライクな画像ギャラリーコンポーネント
 
 [[./images/example.gif]]
 
 * インストール
 
+** Npm
 
 #+begin_src shell
-npm install git://github.com/Office-asoT/Glitter.git#0.1.10
+npm install @asot/glitter --save
+#+end_src
+
+グローバルに登録する場合:
+
+#+begin_src javascript
+import Glitter from 'glitter';
+
+Vue.component('glitter', Glitter);
+#+end_src
+
+又はローカルに登録する場合:
+
+#+begin_src javascript
+import Glitter from 'glitter';
+
+export default {
+  ...
+  components: {
+    Glitter,
+  },
+  ...
+};
+#+end_src
+
+** ブラウザ
+
+@asot/glitterをページにインクルードしてください。
+
+#+begin_src html
+<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/asot/glitter/dist/Glitter.umd.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/asot/glitter/dist//Glitter.css">
+
+<script>
+// グローバルに登録する場合:
+Vue.component('glitter', Glitter);
+
+// ローカルに登録する場合
+new Vue({
+  components: {
+    glitter: Glitter
+  }
+})
+</script>
 #+end_src
 
 * 使い方
 
-#+begin_src vue
-<template>
-  <glitter
-    v-bind:images="[
-      "/path/to/image/1",
-      { src: "/path/to/image/2", caption: "キャプションも指定できます" },
-      "/path/to/image/3"
-    ]"
-  >
-    <!-- ここが表紙として表示されます -->
-    <img src="/path/to/top/image" />
-  </glitter>
-</template>
+マークアップ内でコンポーネントを指定します:
 
-<script>
-import Glitter from 'glitter'
-import 'glitter/dist/Glitter.css'
+#+begin_src html
+<glitter
+  v-bind:images="[
+    '/path/to/image',
+    { src: '/path/to/image', caption: 'Hello glitter' },
+  ]"
+  <p>
+    中には任意のマークアップを書いてください。<br />
+    ここが表紙として表示されます。
+  </p>
+</glitter>
+#+end_src
 
-export default {
-  components: {
-    Glitter
-  }
-}
+** API
+
+*** images: Array<string | { src: string, caption: string }>
+
+**必須** 画像のURLの文字列、もしくは `src` と `caption` を持ったオブジェクトの配列
+
+*** showPageNumbers: boolean
+
+デフォルトは `true` 、ページ番号を表示する
+
+*** showCloseButton: boolean
+
+デフォルトは `true` 、閉じるボタンを表示する
+
+*** showLoading: boolean
+
+デフォルトは `true` 、ロード中画像を表示する
+
+*** showLoadingProgress: boolean
+
+デフォルトは `true` 、ロード中画像と共に進捗を表示する
+
+*** repeatImages: boolean
+
+デフォルトは `false` 、画像をリピートして表示する
+
 </script>
 #+end_src
 
