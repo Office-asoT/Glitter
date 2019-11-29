@@ -88,7 +88,7 @@ new Vue({
   components: {
     glitter: Glitter
   }
-}).$mount('#app')
+})
 </script>
 {% endhighlight %}
 
@@ -111,7 +111,7 @@ Include @asot/glitter in your page then use it.
   ]">
     <p>Here will be displayed as a cover.</p>
   </glitter>
-</template>
+</div>
 
 <script>
 // Local Registration
