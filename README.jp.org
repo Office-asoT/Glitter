@@ -1,10 +1,10 @@
 #+TITLE: @asot/glitter
 
-An image gallery component like Lightbox for or Vue 2.x.
+Vue 2.x向けのLightboxライクな画像ギャラリーコンポーネント
 
 [[./images/example.gif]]
 
-* Install
+* インストール
 
 ** Npm
 
@@ -12,7 +12,7 @@ An image gallery component like Lightbox for or Vue 2.x.
 npm install @asot/glitter --save
 #+end_src
 
-You may install Glitter component globaly:
+グローバルに登録する場合:
 
 #+begin_src javascript
 import Glitter from 'glitter';
@@ -20,7 +20,7 @@ import Glitter from 'glitter';
 Vue.component('glitter', Glitter);
 #+end_src
 
-Or you can register Glitter in your components:
+又はローカルに登録する場合:
 
 #+begin_src javascript
 import Glitter from 'glitter';
@@ -34,9 +34,9 @@ export default {
 };
 #+end_src
 
-** Browser
+** ブラウザ
 
-Include @asot/glitter in the page.
+@asot/glitterをページにインクルードしてください。
 
 #+begin_src html
 <script src="https://unpkg.com/vue"></script>
@@ -45,10 +45,10 @@ Include @asot/glitter in the page.
 <link rel="stylesheet" href="https://unpkg.com/asot/glitter/dist//Glitter.css">
 
 <script>
-// Global Registration
+// グローバルに登録する場合:
 Vue.component('glitter', Glitter);
 
-// Local Registration
+// ローカルに登録する場合
 new Vue({
   components: {
     glitter: Glitter
@@ -57,9 +57,9 @@ new Vue({
 </script>
 #+end_src
 
-* Usage
+* 使い方
 
-You may now use Glitter component in your markup:
+マークアップ内でコンポーネントを指定します:
 
 #+begin_src html
 <glitter
@@ -68,8 +68,8 @@ You may now use Glitter component in your markup:
     { src: '/path/to/image', caption: 'Hello glitter' },
   ]"
   <p>
-    You can write arbitrary markup.<br />
-    Here will be rendered as top.
+    中には任意のマークアップを書いてください。<br />
+    ここが表紙として表示されます。
   </p>
 </glitter>
 #+end_src
@@ -78,58 +78,52 @@ You may now use Glitter component in your markup:
 
 *** images: Array<string | { src: string, caption: string }>
 
-Required, an array of image urls. You can specify a caption as well in object notation.
+必須、画像のURLの文字列、もしくは =src= と =caption= を持ったオブジェクトの配列
 
 *** showPageNumbers: boolean
 
-Display page numbers (default to =true=).
+デフォルトは =true= 、ページ番号を表示する
 
 *** showCloseButton: boolean
 
-Display a close button (default to =true=).
+デフォルトは =true= 、閉じるボタンを表示する
 
 *** showLoading: boolean
 
-Display loding image (default to =true=).
+デフォルトは =true= 、ロード中画像を表示する
 
 *** showLoadingProgress: boolean
 
-Display loading progress (default to =true=).
+デフォルトは =true= 、ロード中画像と共に進捗を表示する
 
 *** repeatImages: boolean
 
-Repeat images (default to =false=).
+デフォルトは =false= 、画像をリピートして表示する
 
-** Development
+* 開発
 
-You need [[https://cli.vuejs.org/][Vue Cli]].
+[[https://cli.vuejs.org/][Vue Cli]] が必要です。
 
-*** Project setup
+** 前準備
 
 #+begin_src shell
 npm install
 #+end_src
 
-*** Compiles and hot-reloads for development
+** 開発用サーバの起動
 
 #+begin_src shell
 npm run serve
 #+end_src
 
-*** Compiles and minifies for production
+** ビルド
 
 #+begin_src shell
 npm run build
 #+end_src
 
-*** Run unit tests
+** テスト
 
 #+begin_src shell
 npm run test:unit
-#+end_src
-
-*** Lints files
-
-#+begin_src shell
-npm run lint
 #+end_src
