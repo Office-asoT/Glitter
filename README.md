@@ -1,3 +1,12 @@
+An image gallery component like Lightbox for or Vue 2.x.
+
+(日本語のREADMEは [README.jp.org](./README.jp.md) にあります。)
+
+[![npm version](https://badge.fury.io/js/%40asot%2Fglitter.svg)](https://badge.fury.io/js/%40asot%2Fglitter)
+
+![Github Actions](https://github.com//Office-asoT/Glitter/.github/workflows/ci.yml/badge.svg)
+
+![img](./images/example.gif)
 
 # Table of Contents
 
@@ -19,13 +28,6 @@
         4.  [Run unit tests](#orgad18873)
         5.  [Lints files](#org6ac5ce9)
     3.  [License](#orgc70eb84)
-
-An image gallery component like Lightbox for or Vue 2.x.
-
-(日本語のREADMEは [README.jp.org](./README.jp.md) にあります。)
-
-![img](./images/example.gif)
-
 
 <a id="org0de66bf"></a>
 
