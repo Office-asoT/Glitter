@@ -3,7 +3,8 @@ An image gallery component like Lightbox for or Vue 2.x.
 (日本語のREADMEは [README.jp.org](./README.jp.md) にあります。)
 
 [![npm version](https://badge.fury.io/js/%40asot%2Fglitter.svg)](https://badge.fury.io/js/%40asot%2Fglitter)
-![Github Actions](https://github.com/Office-asoT/Glitter/workflows/.github/workflows/ci.yml/badge.svg)
+
+![Github Actions](https://github.com/Office-asoT/Glitter/workflows/ci/badge.svg)
 
 ![img](./images/example.gif)
 
