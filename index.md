@@ -10,12 +10,12 @@
 
 <div id="app">
   <glitter v-bind:images="[
-    { src: 'https://images.unsplash.com/photo-1510279931157-4ca63af8a363',
-      caption: 'person holding gray stainless steel teapot and white ceramic teacup' },
-    { src: 'https://images.unsplash.com/photo-1500353391678-d7b57979d6d2',
-      caption: 'coffee and succulent plants' },
+    { src: 'https://images.unsplash.com/photo-1489533119213-66a5cd877091',
+      caption: 'White ceramic mug on table.' },
     { src: 'https://images.unsplash.com/photo-1506619216599-9d16d0903dfd',
-      caption: 'brown ceramic teacup' }
+      caption: 'Brown ceramic teacup' },
+    { src: 'https://images.unsplash.com/photo-1510279931157-4ca63af8a363',
+      caption: 'Person holding gray stainless steel teapot and white ceramic teacup' }
   ]">
     <div>
       <img class="top"
