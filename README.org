@@ -78,27 +78,27 @@ new Vue({
 
 *** images: Array<string | { src: string, caption: string }>
 
-**必須** 画像のURLの文字列、もしくは `src` と `caption` を持ったオブジェクトの配列
+必須、画像のURLの文字列、もしくは =src= と =caption= を持ったオブジェクトの配列
 
 *** showPageNumbers: boolean
 
-デフォルトは `true` 、ページ番号を表示する
+デフォルトは =true= 、ページ番号を表示する
 
 *** showCloseButton: boolean
 
-デフォルトは `true` 、閉じるボタンを表示する
+デフォルトは =true= 、閉じるボタンを表示する
 
 *** showLoading: boolean
 
-デフォルトは `true` 、ロード中画像を表示する
+デフォルトは =true= 、ロード中画像を表示する
 
 *** showLoadingProgress: boolean
 
-デフォルトは `true` 、ロード中画像と共に進捗を表示する
+デフォルトは =true= 、ロード中画像と共に進捗を表示する
 
 *** repeatImages: boolean
 
-デフォルトは `false` 、画像をリピートして表示する
+デフォルトは =false= 、画像をリピートして表示する
 
 </script>
 #+end_src
