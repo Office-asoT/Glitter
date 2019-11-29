@@ -15,7 +15,8 @@ npm install @asot/glitter --save
 グローバルに登録する場合:
 
 #+begin_src javascript
-import Glitter from 'glitter';
+import Glitter from '@asot/glitter';
+import '@asot/glitter/dist//Glitter.css';
 
 Vue.component('glitter', Glitter);
 #+end_src
@@ -23,7 +24,8 @@ Vue.component('glitter', Glitter);
 又はローカルに登録する場合:
 
 #+begin_src javascript
-import Glitter from 'glitter';
+import Glitter from '@asot/glitter';
+import '@asot/glitter/dist//Glitter.css';
 
 export default {
   ...
@@ -40,9 +42,9 @@ export default {
 
 #+begin_src html
 <script src="https://unpkg.com/vue"></script>
-<script src="https://unpkg.com/asot/glitter/dist/Glitter.umd.min.js"></script>
+<script src="https://unpkg.com/@asot/glitter/dist/Glitter.umd.min.js"></script>
 
-<link rel="stylesheet" href="https://unpkg.com/asot/glitter/dist//Glitter.css">
+<link rel="stylesheet" href="https://unpkg.com/[asot/glitter/dist//Glitter.css">
 
 <script>
 // グローバルに登録する場合:
