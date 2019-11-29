@@ -41,13 +41,15 @@ An image gallery component like Lightbox for or Vue 2.x.
 
 You may install Glitter component globaly:
 
-    import Glitter from 'glitter';
+    import Glitter from '@asot/glitter';
+    import '@asot/glitter/dist//Glitter.css'
     
     Vue.component('glitter', Glitter);
 
 Or you can register Glitter in your components:
 
-    import Glitter from 'glitter';
+    import Glitter from '@asot/glitter';
+    import '@asot/glitter/dist//Glitter.css'
     
     export default {
       ...
@@ -65,9 +67,9 @@ Or you can register Glitter in your components:
 Include @asot/glitter in the page.
 
     <script src="https://unpkg.com/vue"></script>
-    <script src="https://unpkg.com/asot/glitter/dist/Glitter.umd.min.js"></script>
+    <script src="https://unpkg.com/@asot/glitter/dist/Glitter.umd.min.js"></script>
     
-    <link rel="stylesheet" href="https://unpkg.com/asot/glitter/dist//Glitter.css">
+    <link rel="stylesheet" href="https://unpkg.com/@asot/glitter/dist/Glitter.css">
     
     <script>
     // Global Registration
