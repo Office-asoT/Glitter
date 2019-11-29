@@ -28,11 +28,11 @@
 
 <script>
 // Local Registration
-// new Vue({
-//   components: {
-//     glitter: Glitter
-//   }
-// }).$mount('#app')
+new Vue({
+  components: {
+    glitter: Glitter
+  }
+}).$mount('#app')
 </script>
 
 <style>
@@ -71,7 +71,8 @@ Then register Glitter in your components and use it:
 <template>
   <glitter v-bind:images="[
     '/path/to/image',
-    // Or you can specify a caption via object notation.
+    // Or you can specify a caption
+    // via object notation.
     { src: '/path/to/image',
       caption: 'Hello @asot/glitter!' },
   ]">
@@ -102,7 +103,8 @@ Include @asot/glitter in your page then use it.
 <div id="app">
   <glitter v-bind:images="[
     '/path/to/image',
-    // Or you can specify a caption via object notation.
+    // Or you can specify a caption
+    // via object notation.
     { src: '/path/to/image',
       caption: 'Hello @asot/glitter!' },
   ]">
