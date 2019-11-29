@@ -4,7 +4,7 @@ An image gallery component like Lightbox for or Vue 2.x.
 
 [![npm version](https://badge.fury.io/js/%40asot%2Fglitter.svg)](https://badge.fury.io/js/%40asot%2Fglitter)
 
-![Github Actions](https://github.com//Office-asoT/Glitter/.github/workflows/ci.yml/badge.svg)
+![Github Actions](https://github.com/gsOffice-asoT/Glitter/.github/workflows/ci.yml/badge.svg)
 
 ![img](./images/example.gif)
 
