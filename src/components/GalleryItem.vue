@@ -48,7 +48,9 @@ export default class GalleryItem extends Vue {
 
   &__gallery-item-image {
     max-width: 100%;
-    max-height: 100%;
+
+    /* FIXME: 縦方向で見切れてしまうことへの暫定対応 */
+    max-height: calc(100vh - 8em);
   }
 }
 </style>
