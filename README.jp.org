@@ -127,3 +127,7 @@ npm run build
 #+begin_src shell
 npm run test:unit
 #+end_src
+
+** License
+
+[[./LICENSE][MIT]]

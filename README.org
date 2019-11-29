@@ -135,3 +135,7 @@ npm run test:unit
 #+begin_src shell
 npm run lint
 #+end_src
+
+** License
+
+[[./LICENSE][MIT]]
