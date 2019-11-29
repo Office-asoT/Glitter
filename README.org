@@ -2,6 +2,8 @@
 
 An image gallery component like Lightbox for or Vue 2.x.
 
+(日本語のREADMEは [[./README.jp.org][README.jp.org]] にあります。)
+
 [[./images/example.gif]]
 
 * Install
