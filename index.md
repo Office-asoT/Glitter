@@ -124,5 +124,5 @@ new Vue({
 
 ## API
 
-- [English](https://github.com/Office-asoT/Glitter/blob/master/README.org)
-- [Japanese](https://github.com/Office-asoT/Glitter/blob/master/README.jp.org)
+- [English](https://github.com/Office-asoT/Glitter/blob/master/README.org#api)
+- [Japanese](https://github.com/Office-asoT/Glitter/blob/master/README.jp.org#api)
