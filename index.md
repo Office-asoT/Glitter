@@ -69,26 +69,29 @@ Then register Glitter in your components and use it:
 
 {% highlight vue %}
 <template>
-  <glitter v-bind:images="[
-    '/path/to/image',
-    // Or you can specify a caption
-    // via object notation.
-    { src: '/path/to/image',
-      caption: 'Hello @asot/glitter!' },
-  ]">
-    <p>Here will be displayed as a cover.</p>
-  </glitter>
+  <div id="app">
+    <glitter v-bind:images="[
+      '/path/to/image',
+      // Or you can specify a caption
+      // via object notation.
+      { src: '/path/to/image',
+        caption: 'Hello @asot/glitter!' },
+    ]">
+      <p>Click here to open the image gallery.</p>
+    </glitter>
+  </div>
 </template>
 
 <script>
 import Glitter from '@asot/glitter';
 import '@asot/glitter/dist//Glitter.css'
 
-new Vue({
+export default {
+  name: 'app',
   components: {
-    glitter: Glitter
+    Glitter,
   }
-})
+}
 </script>
 {% endhighlight %}
 
@@ -109,7 +112,7 @@ Include @asot/glitter in your page then use it.
     { src: '/path/to/image',
       caption: 'Hello @asot/glitter!' },
   ]">
-    <p>Here will be displayed as a cover.</p>
+    <p>Click here to open the image gallery.</p>
   </glitter>
 </div>
 
@@ -117,7 +120,7 @@ Include @asot/glitter in your page then use it.
 // Local Registration
 new Vue({
   components: {
-    glitter: Glitter
+    Glitter
   }
 }).$mount('#app')
 </script>
