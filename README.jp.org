@@ -2,6 +2,8 @@
 
 Vue 2.x向けのLightboxライクな画像ギャラリーコンポーネント
 
+Examples available at https://office-asot.github.io/Glitter/.
+
 [[./images/example.gif]]
 
 * インストール
