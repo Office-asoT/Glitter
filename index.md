@@ -11,11 +11,11 @@
 <div id="app">
   <glitter v-bind:images="[
     { src: '/Glitter/assets/images/coffee3.jpg',
-      caption: 'Taken by Emre Gencer(@reo).' },
+      caption: 'Photo by Emre Gencer on Unsplash' },
     { src: '/Glitter/assets/images/coffee2.jpeg',
-      caption: 'Taken by Danielle MacInnes(@dismacinnes).' },
+      caption: 'Photo by Danielle MacInnes on Unsplash' },
     { src: '/Glitter/assets/images/coffee1.jpeg',
-      caption: 'Taken by Jakub Dziubak(@jckbck).' }
+      caption: 'Photo by Jakub Dziubak on Unsplash' }
   ]">
     <div>
       <img class="top"
