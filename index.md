@@ -10,16 +10,16 @@
 
 <div id="app">
   <glitter v-bind:images="[
-    { src: 'https://images.unsplash.com/photo-1489533119213-66a5cd877091',
-      caption: 'White ceramic mug on table.' },
-    { src: 'https://images.unsplash.com/photo-1506619216599-9d16d0903dfd',
-      caption: 'Brown ceramic teacup' },
-    { src: 'https://images.unsplash.com/photo-1510279931157-4ca63af8a363',
-      caption: 'Person holding gray stainless steel teapot and white ceramic teacup' }
+    { src: '/Glitter/assets/images/coffee3.jpg',
+      caption: 'Taken by Emre Gencer(@reo).' },
+    { src: '/Glitter/assets/images/coffee2.jpeg',
+      caption: 'Taken by Danielle MacInnes(@dismacinnes).' },
+    { src: '/Glitter/assets/images/coffee1.jpeg',
+      caption: 'Taken by Jakub Dziubak(@jckbck).' }
   ]">
     <div>
       <img class="top"
-           src="https://images.unsplash.com/photo-1506619216599-9d16d0903dfd"
+           src="/Glitter/assets/images/coffee1.jpeg"
       />
       <p>Click here to open the image gallery.</p>
     </div>
